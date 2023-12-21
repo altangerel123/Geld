@@ -3,9 +3,9 @@ export default function Header() {
     <div className="flex py-[16px] px-[120px] justify-between border-[1px] mb-[40px] bg-white">
       <div className="flex gap-[24px] justify-center items-center">
         <img className="" src="Vector.png" />
-        <h2 className="text-[16px] font-normal">Dashboard</h2>
-        <p className="text-[16px] font-normal">
-          <a href="/records">Records</a>
+        <h2 className="text-[16px] font-normal leading-[24px]"><a className="hover:font-extrabold" href="dashboard">Dashboard</a></h2>
+        <p className="text-[16px] font-normal leading-[24px]">
+          <a className="hover:font-extrabold" href="/records">Records</a>
         </p>
       </div>
       <div className="flex gap-[24px]">
