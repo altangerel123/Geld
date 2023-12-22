@@ -6,63 +6,77 @@ export default function Records1() {
     {
       id: 1,
       title: "Food & Drinks",
-      image: "Leading icon.png",
+      image: "Icon2.png",
+      img: "Icon1.png",
     },
     {
       id: 2,
       title: "Shopping",
-      image: "Leading icon.png",
+      image: "Icon2.png",
+      img: "Icon1.png",
     },
     {
       id: 3,
       title: "Housing",
-      image: "Leading icon.png",
+      image: "Icon2.png",
+      img: "Icon1.png",
     },
     {
       id: 4,
       title: "Transportation",
-      image: "Leading icon.png",
+      image: "Icon2.png",
+      img: "Icon1.png",
     },
     {
       id: 5,
       title: "Vehicle",
-      image: "Leading icon.png",
+      image: "Icon2.png",
+      img: "Icon1.png",
     },
     {
       id: 6,
       title: "Life & Entertainment",
-      image: "Leading icon.png",
+      image: "Icon2.png",
+      img: "Icon1.png",
     },
     {
       id: 7,
       title: "Communication, PC",
-      image: "Leading icon.png",
+      image: "Icon2.png",
+      img: "Icon1.png",
     },
     {
       id: 8,
       title: "Financial expenses",
-      image: "Leading icon.png",
+      image: "Icon2.png",
+      img: "Icon1.png",
     },
     {
       id: 9,
       title: "Investments",
-      image: "Leading icon.png",
+      image: "Icon2.png",
+      img: "Icon1.png",
     },
     {
       id: 10,
       title: "Income",
-      image: "Leading icon.png",
+      image: "Icon2.png",
+      img: "Icon1.png",
     },
     {
       id: 11,
       title: "Others",
-      image: "Leading icon.png",
+      image: "Icon2.png",
+      img: "Icon1.png",
     },
   ]);
   return (
-    <div className="w-1/4 flex flex-col gap-[24px] bg-white py-[24px] px-[16px]">
+    <div className="w-1/4 flex flex-col gap-[24px] bg-white py-[24px] px-[16px] rounded-[12px]">
       <h1 className="text-[24px] font-semibold">Records</h1>
-      <button className="px-[12px] h-[32px] rounded-[20px] bg-blue-600 text-white">
+      <button
+        className="px-[12px] h-[32px] rounded-[20px] bg-blue-600 text-white"
+        onClick={() => document.getElementById("Income").showModal()}
+      >
         + Add
       </button>
       <input
@@ -94,35 +108,42 @@ export default function Records1() {
         </div>
         <div className="flex flex-col gap-[8px]">
           {category.map((item) => {
-            return (
-              <Category key={item.id} title={item.title} image={item.image} />
-            );
+            return <Category {...item} />;
           })}
         </div>
-        <button>+ Add Category</button>
+        <button className="text-[16px] font-normal leading-[24px]">
+          + Add Category
+        </button>
       </div>
       <div className="flex flex-col gap-[16px]">
-        <h2>Amount Rangess</h2>
+        <h2 className="text-[16px] font-semibold">Amount Rangess</h2>
         <div className="flex gap-[16px]">
           <input
-            className="p-[16px] border-[2px] rounded-[15px]"
+            className="h-[48px] border-[2px] rounded-[15px]"
             type="text"
           ></input>
           <input
-            className="p-[16px] border-[2px] rounded-[16px]"
+            className="h-[48px] border-[2px] rounded-[16px]"
             type="text"
           ></input>
         </div>
-        <input type="range"></input>
+        <div className="flex">
+          <input type="radio"></input>
+          <input type="range"></input>
+          <input type="radio"></input>
+        </div>
       </div>
     </div>
   );
 }
 export const Category = (props) => {
   return (
-    <div className="flex leading-[24px] gap-[8px]">
-      <img className="w-[20px] h-[20px]" src={props.image} />
-      <p className="text-[16px] font-narmal">{props.title}</p>
+    <div className="flex justify-between">
+      <div className="flex leading-[24px] gap-[8px]">
+        <img className="w-[20px] h-[20px]" src={props.image} />
+        <p className="text-[16px] font-narmal">{props.title}</p>
+      </div>
+      <img className="w-[20px] h-[20px]" src={props.img} />
     </div>
   );
 };

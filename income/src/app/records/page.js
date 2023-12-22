@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="px-[120px] flex">
+      <div className="px-[120px] flex gap-[30px]">
         <Records1 />
         <Records2 />
       </div>
