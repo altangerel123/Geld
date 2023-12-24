@@ -1,9 +1,13 @@
 "use client";
-import { useState } from "react";
-import Income from "./Income";
-
+import { useContext, useState} from "react";
+import { ModalContext } from "@/app/records/page";
 
 export default function Records1() {
+
+  const{modal, setModal} = useContext(ModalContext);
+  const handllick = () => {
+    setModal(!modal);
+  }
   const [category, setCategory] = useState([
     {
       id: 1,
@@ -73,9 +77,9 @@ export default function Records1() {
     },
   ]);
   return (
-    <div className="w-1/4 flex flex-col gap-[24px] bg-white py-[24px] px-[16px] rounded-[12px]">
+    <div className="w-1/4 flex flex-col gap-[24px] bg-white py-[24px] px-[16px] rounded-[12px] ">
       <h1 className="text-[24px] font-semibold">Records</h1>
-      <button className="px-[12px] h-[32px] rounded-[20px] bg-blue-600 text-white">
+      <button className="px-[12px] h-[32px] rounded-[20px] bg-blue-600 text-white" onClick={handllick}>
         + Add
       </button>
       <input
@@ -130,7 +134,7 @@ export default function Records1() {
           <input type="radio"></input>
           <input type="range"></input>
           <input type="radio"></input>
-          </div>
+        </div>
       </div>
     </div>
   );

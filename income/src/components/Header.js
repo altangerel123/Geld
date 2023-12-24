@@ -1,11 +1,22 @@
+"use client";
+import { useState } from "react";
+
 export default function Header() {
-  return (
-    <div className="flex py-[16px] px-[120px] justify-between border-[1px] mb-[40px] bg-white">
+  const [data, setData] = useState("");
+  const  handlClick = () => {
+    setData(!data);
+  }
+    return (
+    <div className="h-[80px] flex py-[16px] px-[120px] justify-between border-[1px] mb-[40px] bg-white">
       <div className="flex gap-[24px] justify-center items-center">
         <img className="" src="Vector.png" />
-        <h2 className="text-[16px] font-normal leading-[24px]"><a className="hover:font-extrabold" href="dashboard">Dashboard</a></h2>
+        <h2 className=" leading-[24px]" 
+            style={{fontWeight: data ? "400" : "700"}} 
+            onClick={handlClick}>
+          Dashboard
+        </h2>
         <p className="text-[16px] font-normal leading-[24px]">
-          <a className="hover:font-extrabold" href="/records">Records</a>
+          <a href="/records">Records</a>
         </p>
       </div>
       <div className="flex gap-[24px]">
