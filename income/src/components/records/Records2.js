@@ -72,7 +72,7 @@ export default function Records2() {
           <input type="checkbox" />
           <p>Select all</p>
         </div>
-        <p className="text-[#94A3B8]">-35000$</p>
+        <p>-35000$</p>
       </div>
       <div className="flex flex-col  gap-[12px]">
         <h2 className="text-[16px] font-semibold leading-[24px]">Today</h2>

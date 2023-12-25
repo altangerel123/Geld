@@ -1,24 +1,36 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const jwt = require("jsonwebtoken");
 
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(auth());
 
 app.post("/sign-in", (req, res) => {
-  // console.log(req.body, "GIGIG");
-  const { email, password } = req.body;
-
-  if (email === "admin" && password === "admin") {
-    return res.json({
-      token: "1234",
+  const headers = req.headers;
+  const a = headers.authorization;
+  if (!a) {
+    res.status(401).json({
+      message: "Unauthorized -6",
+    });
+    return;
+  }
+  try {
+    jwt.verify(a, "secret-key");
+  } catch (e) {
+    res.status(401).json({
+      message: "Unauthorized",
     });
   }
 
-  res.status(401).send({
-    message: "Invalid credentials",
+  const { email, password } = req.body;
+
+  const token = jwt.sign({ email }, "secret-key", { expiresIn: "1h" });
+  res.json({
+    token,
   });
 });
 

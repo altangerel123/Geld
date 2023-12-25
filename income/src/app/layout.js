@@ -3,6 +3,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { createContext, useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
 const Autcontext = createContext();
@@ -12,19 +13,28 @@ export default function RootLayout({ children }) {
 
   const sighIn = async (email, password) => {
     try {
-      const res = await fetch("http://localhost:3002/sign-in", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const { data } = await axios.post(
+        "http://localhost:3002/sign-in",
+        {
+          email,
+          password,
         },
-        body: JSON.stringify({ email, password }),
-      });
-      if (res.status !== 200) {
-        throw new Error("Invalid credentials");
-      }
+        {
+          headers: {
+            Authorization:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IiIsImlhdCI6MTcwMzQ3Mzc1NywiZXhwIjoxNzAzNDc3MzU3fQ.EkBXWxbMfY9K86mYK4552OCKSzv1o3721Obw92ioEK8",
+          },
+        }
+      );
 
-      const data = await res.json();
+      // await axios.get("url", {
+      //   headers: {
+      //     Authorization: "token",
+      //   },
+      // });
+
       const { token } = data;
+
       console.log(token);
     } catch (err) {
       console.log(err, "FFF");

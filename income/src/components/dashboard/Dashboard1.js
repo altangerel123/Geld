@@ -1,6 +1,6 @@
 "use client";
 
-import { Logo1 } from "@/components/assets/Logo1";
+import { Logo1 } from "../../../public/assets/Logo1";
 
 export default function Dashboard1() {
   return (

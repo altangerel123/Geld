@@ -1,7 +1,7 @@
 "use client";
 
-import { Check } from "@/components/assets/Check";
-import { Prame2 } from "@/components/assets/Prame2";
+import { Check } from "../../../public/assets/Check";
+import { Prame2 } from "../../../public/assets/Prame2";
 
 export default function login3(props) {
   return (

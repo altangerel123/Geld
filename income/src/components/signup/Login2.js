@@ -1,7 +1,7 @@
 "use client";
 
-import { Money1 } from "@/components/assets/Money1";
-import { Prame1 } from "@/components/assets/Prame1";
+import { Money1 } from "../../../public/assets/Money1";
+import { Prame1 } from "../../../public/assets/Prame1";
 
 export default function Login2(props) {
   return (
