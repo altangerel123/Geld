@@ -14,7 +14,6 @@ export default function Income() {
   const selectClick = () => {
     setSelect(!select);
   };
-  const { add } = useContext(ModalContext);
 
   const [expense, setExpense] = useState("#0166FF");
   const [income, setIncome] = useState("blue");
@@ -28,7 +27,6 @@ export default function Income() {
       className={styles.container}
       style={{
         display: modal ? "none" : "flex",
-        // display: add ? "flex" : "none",
       }}
     >
       <div className="w-[728px] bg-white border-[1px] flex flex-col gap-[20px]">
@@ -36,7 +34,7 @@ export default function Income() {
           <h1 className="text-[20px] font-semibold leading-[28px]">
             Add Record
           </h1>
-          <button onClick={handlClick}>X</button>
+          <button onClick={handlClick} className="text-[20px] font-semibold leading-[28px]">X</button>
         </div>
         <div className="flex">
           <div className="w-1/2 p-[24px]">

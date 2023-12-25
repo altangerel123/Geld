@@ -1,6 +1,7 @@
 "use client";
 import { ModalContext } from "@/app/records/page";
 import { useContext, useState } from "react";
+import Add from "./Add";
 
 export default function Choose() {
   const { select } = useContext(ModalContext);
@@ -43,7 +44,7 @@ export default function Choose() {
   ]);
 
   return (
-    <div style={{ display: select ? "none" : "flex" }}>
+    <div style={{ display: select ? "none" : "flex" }} >
       <div className="w-full absolute top-[80px] left-0 ">
         <div
           className="flex w-full p-[16px] items-start gap-[12px] border-b-[1px] bg-white absolute"

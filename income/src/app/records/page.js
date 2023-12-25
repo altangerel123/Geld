@@ -1,5 +1,6 @@
 "use client";
 import Header from "@/components/Header";
+import Add from "@/components/records/Add";
 import Income from "@/components/records/Income";
 import Records1 from "@/components/records/Records1";
 import Records2 from "@/components/records/Records2";
@@ -22,6 +23,7 @@ export default function Home() {
           <Records2 />
         </div>
         <Income />
+        <Add />
       </ModalContext.Provider>
     </>
   );
