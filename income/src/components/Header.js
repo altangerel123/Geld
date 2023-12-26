@@ -15,7 +15,7 @@ export default function Header() {
           onClick={() => {
             router.push("/dashboard");
           }}
-          style={{ fontWeight: isItem ? "800" : "400" }}
+          // style={{ fontWeight: isItem ? "800" : "400" }}
         >
           Dashboard
         </h2>
@@ -24,7 +24,7 @@ export default function Header() {
           onClick={() => {
             router.push("/records");
           }}
-          style={{ fontWeight: isItem ? "800" : "400" }}
+          // style={{ fontWeight: isItem ? "800" : "400" }}
         >
           Records
         </h2>

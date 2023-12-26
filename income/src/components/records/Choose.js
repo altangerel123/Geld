@@ -1,16 +1,12 @@
 "use client";
 import { ModalContext } from "@/app/records/page";
 import { useContext, useState } from "react";
-import Add from "./Add";
 
 export default function Choose() {
-  const { select } = useContext(ModalContext);
-  const { add, setAdd } = useContext(ModalContext);
-  const addClick = () => {
-    setAdd(!add);
-  };
+  const { isAddModalShown, isCategory, setIsCategory } =
+    useContext(ModalContext);
 
-  const [selects, setSelects] = useState([
+  const [selects] = useState([
     {
       id: 2,
       title: "Home",
@@ -44,11 +40,13 @@ export default function Choose() {
   ]);
 
   return (
-    <div style={{ display: select ? "none" : "flex" }} >
-      <div className="w-full absolute top-[80px] left-0 ">
+    <div style={{ display: isAddModalShown ? "none" : "flex" }}>
+      <div className="w-full absolute top-[70px] left-0">
         <div
           className="flex w-full p-[16px] items-start gap-[12px] border-b-[1px] bg-white absolute"
-          onClick={addClick}
+          onClick={() => {
+            setIsCategory("false");
+          }}
         >
           <img className="w-[24px] h-[24px]" src="PlusCircle.png" />
           <p className="text-[16px] font-narmal">Add Category</p>
@@ -56,7 +54,7 @@ export default function Choose() {
         {selects.map((item) => {
           return <Select {...item} />;
         })}
-      </div>
+      </div>{" "}
     </div>
   );
 }

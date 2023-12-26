@@ -80,7 +80,7 @@ export default function Records1() {
       <button
         className="px-[12px] h-[32px] rounded-[20px] bg-blue-600 text-white"
         onClick={() => {
-          !isIncomeModalShown() ? setIsIncomeModalShown(true) : "";
+          setIsIncomeModalShown(true);
         }}
       >
         + Add

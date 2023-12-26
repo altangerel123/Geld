@@ -4,17 +4,16 @@ import { ModalContext } from "@/app/records/page";
 import { useContext, useState } from "react";
 import styles from "@/components/records/income.module.css";
 import Choose from "./Choose";
+import Add from "./Add";
 
 export default function Income() {
-  // const { modal, setModal } = useContext(ModalContext);
-  // const handlClick = () => {
-  //   setModal(!modal);
-  // };
-  // const { select, setSelect } = useContext(ModalContext);
-  // const selectClick = () => {
-  //   setSelect(!select);
-  // };
-  const { isIncomeModalShown } = useContext(ModalContext);
+  const {
+    isIncomeModalShown,
+    setIsIncomeModalShown,
+    setIsAddModalShown,
+    isAddModalShown,
+    isCategory,
+  } = useContext(ModalContext);
 
   const [expense, setExpense] = useState("#0166FF");
   const [income, setIncome] = useState("blue");
@@ -27,15 +26,24 @@ export default function Income() {
     <div
       className={styles.container}
       style={{
-        display: isIncomeModalShown ? "none" : "flex",
+        display: isIncomeModalShown ? "flex" : "none",
       }}
     >
+      {isCategory && <Add />}
       <div className="w-[728px] bg-white border-[1px] flex flex-col gap-[20px]">
         <div className="flex justify-between px-[24px] py-[20px] border-b-[1px]">
           <h1 className="text-[20px] font-semibold leading-[28px]">
             Add Record
           </h1>
-          <button className="text-[20px] font-semibold leading-[28px]">
+          <button
+            onClick={() => {
+              setIsIncomeModalShown(false);
+            }}
+            style={{
+              display: isIncomeModalShown ? "flex" : "none",
+            }}
+            className="text-[20px] font-semibold leading-[28px]"
+          >
             X
           </button>
         </div>
@@ -71,14 +79,16 @@ export default function Income() {
               <h2 className="text-[16px] font-normal leading-[24px]">
                 Category
               </h2>
-              <input
+              <div
                 className="w-full border-[1px] p-[10px] mb-[10px]"
-                type="text"
-                placeholder="Choose"
-              ></input>
-              <div>
+                onClick={() => {
+                  setIsAddModalShown(false);
+                }}
+              >
+                Choose
                 <Choose />
               </div>
+              {isAddModalShown && <Choose />}
             </div>
             <div className="w-1/2 flex gap-[8px] rounded-[8px] mb-[20px]">
               <div>
