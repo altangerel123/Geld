@@ -12,18 +12,32 @@ export default function Home() {
   const [modal, setModal] = useState("flex");
   const [select, setSelect] = useState("flex");
   const [add, setAdd] = useState("flex");
+  const [isIncomeModalShown, setIsIncomeModalShown] = useState("false");
+  const [isAddModalShown, setIsAddModalShown] = useState("false");
+
   return (
     <>
       <Header />
       <ModalContext.Provider
-        value={{ modal, setModal, select, setSelect, add, setAdd }}
+        value={{
+          modal,
+          setModal,
+          select,
+          setSelect,
+          add,
+          setAdd,
+          isIncomeModalShown,
+          setIsIncomeModalShown,
+          isIncomeModalShown,
+          setIsAddModalShown,
+        }}
       >
         <div className="px-[120px] flex gap-[40px] relative">
           <Records1 />
           <Records2 />
         </div>
-        <Income />
-        <Add />
+        {isIncomeModalShown && <Income />}
+        {isAddModalShown && <Add />}
       </ModalContext.Provider>
     </>
   );

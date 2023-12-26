@@ -3,11 +3,10 @@ import { useContext, useState } from "react";
 import { ModalContext } from "@/app/records/page";
 
 export default function Records1() {
-  const { modal, setModal } = useContext(ModalContext);
-  const handllick = () => {
-    setModal(!modal);
-  };
-  const [category, setCategory] = useState([
+  const { isIncomeModalShown, setIsIncomeModalShown } =
+    useContext(ModalContext);
+
+  const [category] = useState([
     {
       id: 1,
       title: "Food & Drinks",
@@ -80,7 +79,9 @@ export default function Records1() {
       <h1 className="text-[24px] font-semibold">Records</h1>
       <button
         className="px-[12px] h-[32px] rounded-[20px] bg-blue-600 text-white"
-        onClick={handllick}
+        onClick={() => {
+          !isIncomeModalShown() ? setIsIncomeModalShown(true) : "";
+        }}
       >
         + Add
       </button>

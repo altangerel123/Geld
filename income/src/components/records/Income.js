@@ -6,14 +6,15 @@ import styles from "@/components/records/income.module.css";
 import Choose from "./Choose";
 
 export default function Income() {
-  const { modal, setModal } = useContext(ModalContext);
-  const handlClick = () => {
-    setModal(!modal);
-  };
-  const { select, setSelect } = useContext(ModalContext);
-  const selectClick = () => {
-    setSelect(!select);
-  };
+  // const { modal, setModal } = useContext(ModalContext);
+  // const handlClick = () => {
+  //   setModal(!modal);
+  // };
+  // const { select, setSelect } = useContext(ModalContext);
+  // const selectClick = () => {
+  //   setSelect(!select);
+  // };
+  const { isIncomeModalShown } = useContext(ModalContext);
 
   const [expense, setExpense] = useState("#0166FF");
   const [income, setIncome] = useState("blue");
@@ -26,7 +27,7 @@ export default function Income() {
     <div
       className={styles.container}
       style={{
-        display: modal ? "none" : "flex",
+        display: isIncomeModalShown ? "none" : "flex",
       }}
     >
       <div className="w-[728px] bg-white border-[1px] flex flex-col gap-[20px]">
@@ -34,7 +35,9 @@ export default function Income() {
           <h1 className="text-[20px] font-semibold leading-[28px]">
             Add Record
           </h1>
-          <button onClick={handlClick} className="text-[20px] font-semibold leading-[28px]">X</button>
+          <button className="text-[20px] font-semibold leading-[28px]">
+            X
+          </button>
         </div>
         <div className="flex">
           <div className="w-1/2 p-[24px]">
@@ -72,7 +75,6 @@ export default function Income() {
                 className="w-full border-[1px] p-[10px] mb-[10px]"
                 type="text"
                 placeholder="Choose"
-                onClick={selectClick}
               ></input>
               <div>
                 <Choose />

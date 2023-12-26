@@ -1,24 +1,32 @@
 "use client";
+
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Header() {
-  const [data, setData] = useState("16px");
-  const handlClick = () => {
-    setData(!data);
-  };
+  const [isItem, isSetItem] = useState(false);
+  const router = useRouter();
   return (
     <div className="h-[80px] flex py-[16px] px-[120px] justify-between border-[1px] mb-[40px] bg-white">
       <div className="flex gap-[24px] justify-center items-center">
         <img className="" src="Vector.png" />
         <h2
           className=" leading-[24px] "
-          onClick={handlClick}
-          style={{ fontSize: data ? "" : "20px" }}
+          onClick={() => {
+            router.push("/dashboard");
+          }}
+          style={{ fontWeight: isItem ? "800" : "400" }}
         >
-          <a href="/dashboard">Dashboard</a>
+          Dashboard
         </h2>
-        <h2 className="text-[16px] font-normal leading-[24px]">
-          <a href="/records">Records</a>
+        <h2
+          className="text-[16px] font-normal leading-[24px]"
+          onClick={() => {
+            router.push("/records");
+          }}
+          style={{ fontWeight: isItem ? "800" : "400" }}
+        >
+          Records
         </h2>
       </div>
       <div className="flex gap-[24px]">
