@@ -27,11 +27,11 @@ export default function RootLayout({ children }) {
         }
       );
 
-      // await axios.get("url", {
-      //   headers: {
-      //     Authorization: "token",
-      //   },
-      // });
+      await axios.get("url", {
+        headers: {
+          Authorization: "token",
+        },
+      });
 
       const { token } = data;
 
@@ -39,9 +39,9 @@ export default function RootLayout({ children }) {
     } catch (err) {
       console.log(err, "FFF");
     }
-    // const { token } = await res.json();
-    // setIsLoggedId(true);
-    // localStorage.setItem("token", token);
+    const { token } = await res.json();
+    setIsLoggedId(true);
+    localStorage.setItem("token", token);
   };
 
   useEffect(() => {

@@ -29,7 +29,6 @@ export default function Income() {
         display: isIncomeModalShown ? "flex" : "none",
       }}
     >
-      {isCategory && <Add />}
       <div className="w-[728px] bg-white border-[1px] flex flex-col gap-[20px]">
         <div className="flex justify-between px-[24px] py-[20px] border-b-[1px]">
           <h1 className="text-[20px] font-semibold leading-[28px]">
@@ -75,12 +74,12 @@ export default function Income() {
               <p className="text-[16px] font-normal leading-[24px]">Amount</p>
               <p className="">$000.00</p>
             </div>
-            <div className="relative">
+            <div>
               <h2 className="text-[16px] font-normal leading-[24px]">
                 Category
               </h2>
               <div
-                className="w-full border-[1px] p-[10px] mb-[10px]"
+                className="w-full border-[1px] p-[10px] mb-[10px] relative"
                 onClick={() => {
                   setIsAddModalShown(false);
                 }}

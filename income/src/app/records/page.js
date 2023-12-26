@@ -1,6 +1,5 @@
 "use client";
 import Header from "@/components/Header";
-import Choose from "@/components/records/Choose";
 import Income from "@/components/records/Income";
 import Records1 from "@/components/records/Records1";
 import Records2 from "@/components/records/Records2";

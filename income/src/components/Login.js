@@ -47,8 +47,8 @@ export const Login = () => {
                 sighIn(email, password);
               }}
             >
-              <a href="/login">Log in</a>
-              {/* Login */}
+              {/* <a href="/login">Log in</a> */}
+              Login
             </button>
           </div>
           <div className="flex justify-center items-center">

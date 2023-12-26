@@ -41,11 +41,11 @@ export default function Choose() {
 
   return (
     <div style={{ display: isAddModalShown ? "none" : "flex" }}>
-      <div className="w-full absolute top-[70px] left-0">
+      <div className="w-full absolute top-[50px] left-0">
         <div
-          className="flex w-full p-[16px] items-start gap-[12px] border-b-[1px] bg-white absolute"
+          className="flex w-full p-[16px] items-start gap-[12px] border-b-[1px] bg-white"
           onClick={() => {
-            setIsCategory("false");
+            setIsCategory(false);
           }}
         >
           <img className="w-[24px] h-[24px]" src="PlusCircle.png" />
@@ -54,7 +54,7 @@ export default function Choose() {
         {selects.map((item) => {
           return <Select {...item} />;
         })}
-      </div>{" "}
+      </div>
     </div>
   );
 }

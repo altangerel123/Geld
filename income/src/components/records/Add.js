@@ -34,10 +34,53 @@ import { FaPencilAlt } from "react-icons/fa";
 
 export default function Add() {
   const { isCategory } = useContext(ModalContext);
+  const [Icon] = useState([
+    {title: <FaHouse /> },
+    {title: <PiHouseLineFill /> },
+    {title: <PiIdentificationBadgeFill /> },
+    {title: <PiIdentificationCardFill /> },
+    {title: <PiLadderBold /> },
+    {title: <BsIntersect /> },
+    {title: <FaRegImage /> },
+    {title: <FaMagnifyingGlassPlus/> },
+    {title: <FaMicrophone /> },
+    {title: <SiMicrosoftexcel /> },
+
+    {title: <PiNotepadFill />},
+    {title: <MdOutlinePlaylistPlay />},
+    {title: <RiLeafFill />},
+    {title: <PiNumberFiveFill />},
+    {title: <PiNumberSevenFill/>},
+    {title:  <PiRoadHorizonFill/>},
+    {title: <PiHourglassSimpleMediumFill />},
+    {title: <RiAnchorLine />},
+    {title: <PiBezierCurveFill />},
+    {title: <PiExcludeFill />},
+
+    {title: <MdVignette />},
+    {title: <FaBaseballBall />},
+    {title: <FaQuestionCircle />},
+    {title: <PiExamFill />},
+    {title: <PiWatchFill />},
+    {title: <PiGlobeFill />},
+    {title: <PiOrangeSliceFill />},
+    {title: <PiPeaceFill />},
+    {title: <PiToiletPaperFill />},
+    {title: <FaPencilAlt />},
+  ]);
+  const [color] = useState([
+    {color: "#0166FF"},
+    {color: "#01B3FF"},
+    {color: "#41CC00"},
+    {color: "#F9D100"},
+    {color: "#FF7B01"},
+    {color: "#AE01FF"},
+    {color: "#FF0101"},
+  ]);
 
   return (
-    <div style={{ display: isCategory ? "flex" : "none" }}>
-      <div className="w-full h-screen placeholder:h-screen flex justify-center items-center border-[1px] border-black">
+    <div className="absolute top-0 left-0" style={{ display: isCategory ? "flex" : "flex" }}>
+      <div className="w-full h-screen flex justify-center items-center bg-white">
         <div className="border-[1px] rounded-[10px] bg-white">
           <div className="flex justify-between border-b-[1px] p-[24px]">
             <h1 className="text-[20px] font-semibold leading-[28px]">
@@ -49,7 +92,7 @@ export default function Add() {
           </div>
           <div className="p-[24px]">
             <div className="flex gap-[12px] ">
-              <div className="flex p-[16px] border-[1px] bg-[#F9FAFB] rounded-[8px]">
+              <div className="flex p-[16px] border-[1px] bg-[#F9FAFB] rounded-[8px] relative">
                 <p className="w-[24px] h-[24px]">
                   <FaHouse />
                 </p>
@@ -63,119 +106,38 @@ export default function Add() {
             <p className="h-[40px] rounded-[20px] bg-[#16A34A] mt-[32px]"></p>
           </div>
         </div>
-        <Icon />
+        <div className="absolute top-0 left-0 hidden">
+          {Icon.map((item) => {
+            return (
+              <div className="grid grid-cols-6 p-[24px] bg-white ">
+                <IconProps {...item} />
+              </div>
+            )
+          })}
+          {color.map((item) => {
+            return (
+              <div className="grid grid-cols-6 p-[24px] bg-white ">
+                <Color {...item} />
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   );
 }
-export function Icon() {
+
+export const IconProps = (props) => {
   return (
-    <div className="p-[24px] bg-white rounded-[8px]">
-      <div className="grid grid-cols-6 p-[24px] gap-[24px]">
-        <div>
-          <FaHouse />
-        </div>
-        <div>
-          <PiHouseLineFill />
-        </div>
-        <div>
-          <PiIdentificationBadgeFill />
-        </div>
-        <div>
-          <PiIdentificationCardFill />
-        </div>
-        <div>
-          <PiLadderBold />
-        </div>
-        <div>
-          <BsIntersect />
-        </div>
-
-        <div>
-          <FaRegImage />
-        </div>
-        <div>
-          <FaMagnifyingGlassPlus />
-        </div>
-        <div>
-          <FaMicrophone />
-        </div>
-        <div>
-          <SiMicrosoftexcel />
-        </div>
-        <div>
-          <PiNotepadFill />
-        </div>
-        <div>
-          <MdOutlinePlaylistPlay />
-        </div>
-
-        <div>
-          <RiLeafFill />
-        </div>
-        <div>
-          <PiNumberFiveFill />
-        </div>
-        <div>
-          <PiNumberSevenFill />
-        </div>
-        <div>
-          <PiRoadHorizonFill />
-        </div>
-        <div>
-          <PiHourglassSimpleMediumFill />
-        </div>
-        <div>
-          <RiAnchorLine />
-        </div>
-
-        <div>
-          <PiBezierCurveFill />
-        </div>
-        <div>
-          <PiExcludeFill />
-        </div>
-        <div>
-          <MdVignette />
-        </div>
-        <div>
-          <FaBaseballBall />
-        </div>
-        <div>
-          <FaQuestionCircle />
-        </div>
-        <div>
-          <PiExamFill />
-        </div>
-
-        <div>
-          <PiWatchFill />
-        </div>
-        <div>
-          <PiGlobeFill />
-        </div>
-        <div>
-          <PiOrangeSliceFill />
-        </div>
-        <div>
-          <PiPeaceFill />
-        </div>
-        <div>
-          <PiToiletPaperFill />
-        </div>
-        <div>
-          <FaPencilAlt />
-        </div>
-      </div>
-      <div className="flex gap-[16px] py-[24px] border-t-[1px] border-black">
-        <div className="w-[24px] h-[24px] rounded-full border-[1px] bg-[#0166FF]"></div>
-        <div className="w-[24px] h-[24px] rounded-full border-[1px] bg-[#01B3FF]"></div>
-        <div className="w-[24px] h-[24px] rounded-full border-[1px] bg-[#41CC00]"></div>
-        <div className="w-[24px] h-[24px] rounded-full border-[1px] bg-[#F9D100]"></div>
-        <div className="w-[24px] h-[24px] rounded-full border-[1px] bg-[#FF7B01]"></div>
-        <div className="w-[24px] h-[24px] rounded-full border-[1px] bg-[#AE01FF]"></div>
-        <div className="w-[24px] h-[24px] rounded-full border-[1px] bg-[#FF0101]"></div>
-      </div>
+     <div className="border-[1px]">
+      <p className="border-[1px]">{props.title}</p>
+     </div>
+  );
+};
+export const Color = (props) => {
+  return (
+    <div className="flex gap-[16px] py-[24px] border-t-[1px] border-black">
+      <div className="w-[24px] h-[24px] rounded-full border-[1px]">{props.color}</div>
     </div>
   );
 }

@@ -1,17 +1,17 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+// import { useState } from "react";
 
 export default function Header() {
-  const [isItem, isSetItem] = useState(false);
+  // const [isItem, isSetItem] = useState(false);
   const router = useRouter();
   return (
     <div className="h-[80px] flex py-[16px] px-[120px] justify-between border-[1px] mb-[40px] bg-white">
       <div className="flex gap-[24px] justify-center items-center">
         <img className="" src="Vector.png" />
         <h2
-          className=" leading-[24px] "
+          className="text-[16px] font-normal leading-[24px] cursor-pointer "
           onClick={() => {
             router.push("/dashboard");
           }}
@@ -20,7 +20,7 @@ export default function Header() {
           Dashboard
         </h2>
         <h2
-          className="text-[16px] font-normal leading-[24px]"
+          className="text-[16px] font-normal leading-[24px] cursor-pointer"
           onClick={() => {
             router.push("/records");
           }}
