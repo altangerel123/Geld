@@ -1,7 +1,9 @@
 "use client";
+import styles from "@/components/records/income.module.css";
 import { ModalContext } from "@/app/records/page";
 import { useContext, useState } from "react";
-import { FaHouse } from "react-icons/fa6";
+
+import { FaHouse, FaTractor } from "react-icons/fa6";
 import { PiHouseLineFill } from "react-icons/pi";
 import { PiIdentificationBadgeFill } from "react-icons/pi";
 import { PiIdentificationCardFill } from "react-icons/pi";
@@ -31,113 +33,130 @@ import { PiOrangeSliceFill } from "react-icons/pi";
 import { PiPeaceFill } from "react-icons/pi";
 import { PiToiletPaperFill } from "react-icons/pi";
 import { FaPencilAlt } from "react-icons/fa";
+import { handleClientScriptLoad } from "next/script";
 
 export default function Add() {
-  const { isCategory } = useContext(ModalContext);
-  const [Icon] = useState([
-    {title: <FaHouse /> },
-    {title: <PiHouseLineFill /> },
-    {title: <PiIdentificationBadgeFill /> },
-    {title: <PiIdentificationCardFill /> },
-    {title: <PiLadderBold /> },
-    {title: <BsIntersect /> },
-    {title: <FaRegImage /> },
-    {title: <FaMagnifyingGlassPlus/> },
-    {title: <FaMicrophone /> },
-    {title: <SiMicrosoftexcel /> },
+  const { isCategory, setIsCategory, isIcon, setIsIcon } =
+    useContext(ModalContext);
 
-    {title: <PiNotepadFill />},
-    {title: <MdOutlinePlaylistPlay />},
-    {title: <RiLeafFill />},
-    {title: <PiNumberFiveFill />},
-    {title: <PiNumberSevenFill/>},
-    {title:  <PiRoadHorizonFill/>},
-    {title: <PiHourglassSimpleMediumFill />},
-    {title: <RiAnchorLine />},
-    {title: <PiBezierCurveFill />},
-    {title: <PiExcludeFill />},
+  const [isOpen, setIsOpen] = useState(false);
+  const Icon = [
+    <FaHouse />,
+    <PiHouseLineFill />,
+    <PiIdentificationBadgeFill />,
+    <PiIdentificationCardFill />,
+    <PiLadderBold />,
+    <BsIntersect />,
+    <FaRegImage />,
+    <FaMagnifyingGlassPlus />,
+    <FaMicrophone />,
+    <SiMicrosoftexcel />,
 
-    {title: <MdVignette />},
-    {title: <FaBaseballBall />},
-    {title: <FaQuestionCircle />},
-    {title: <PiExamFill />},
-    {title: <PiWatchFill />},
-    {title: <PiGlobeFill />},
-    {title: <PiOrangeSliceFill />},
-    {title: <PiPeaceFill />},
-    {title: <PiToiletPaperFill />},
-    {title: <FaPencilAlt />},
-  ]);
-  const [color] = useState([
-    {color: "#0166FF"},
-    {color: "#01B3FF"},
-    {color: "#41CC00"},
-    {color: "#F9D100"},
-    {color: "#FF7B01"},
-    {color: "#AE01FF"},
-    {color: "#FF0101"},
-  ]);
+    <PiNotepadFill />,
+    <MdOutlinePlaylistPlay />,
+    <RiLeafFill />,
+    <PiNumberFiveFill />,
+    <PiNumberSevenFill />,
+    <PiRoadHorizonFill />,
+    <PiHourglassSimpleMediumFill />,
+    <RiAnchorLine />,
+    <PiBezierCurveFill />,
+    <PiExcludeFill />,
+
+    <MdVignette />,
+    <FaBaseballBall />,
+    <FaQuestionCircle />,
+    <PiExamFill />,
+    <PiWatchFill />,
+    <PiGlobeFill />,
+    <PiOrangeSliceFill />,
+    <PiPeaceFill />,
+    <PiToiletPaperFill />,
+    <FaPencilAlt />,
+  ];
+  const Color = [
+    "#0166FF",
+    "#01B3FF",
+    "#41CC00",
+    "#F9D100",
+    "#FF7B01",
+    "#AE01FF",
+    "#FF0101",
+  ];
 
   return (
-    <div className="absolute top-0 left-0" style={{ display: isCategory ? "flex" : "flex" }}>
-      <div className="w-full h-screen flex justify-center items-center bg-white">
+    <div
+      className={styles.icon}
+      style={{ display: isCategory ? "flex" : "flex" }}
+    >
+      <div className="flex justify-center items-center bg-white rounded-[12px]">
         <div className="border-[1px] rounded-[10px] bg-white">
           <div className="flex justify-between border-b-[1px] p-[24px]">
             <h1 className="text-[20px] font-semibold leading-[28px]">
               Add Record
             </h1>
-            <button className="text-[20px] font-semibold leading-[28px]">
+            <button
+              className="text-[20px] font-semibold leading-[28px]"
+              onClick={() => {
+                setIsCategory(false);
+              }}
+              style={{ display: isCategory ? "flex" : "none" }}
+            >
               X
             </button>
           </div>
           <div className="p-[24px]">
-            <div className="flex gap-[12px] ">
-              <div className="flex p-[16px] border-[1px] bg-[#F9FAFB] rounded-[8px] relative">
-                <p className="w-[24px] h-[24px]">
-                  <FaHouse />
-                </p>
+            <div className="flex gap-[12px] relative">
+              <div
+                className="flex p-[16px] border-[1px] bg-[#F9FAFB] rounded-[8px] "
+                onClick={() => {
+                  setIsIcon(false);
+                }}
+              >
+                <p className="w-[24px] h-[24px]">{isOpen}</p>
                 <img className="w-[24px] h-[24px]" src="Icon3.png" />
               </div>
+
               <div className="flex border-[1px] p-[16px] bg-[#F9FAFB] rounded-[8px]">
                 <input type="text" placeholder="Name" />
                 <img className="" src="Icon3.png" />
+              </div>
+              <div
+                className="absolute top-[60px] left-0"
+                style={{ display: isIcon ? "none" : "flex" }}
+              >
+                <div className="grid grid-cols-6 bg-white">
+                  {Icon.map((icon, item) => {
+                    return (
+                      <div
+                        className="p-[24px]"
+                        key={item.icon}
+                        onClick={() => {
+                          setIsOpen(icon);
+                        }}
+                      >
+                        {icon}
+                      </div>
+                    );
+                  })}
+                  <div className="grid grid-cols-7 gap-[40px] p-4">
+                    {Color.map((item) => {
+                      return (
+                        <div
+                          className="w-[24px] h-[24px] rounded-full border-t-[1px]"
+                          key={item}
+                          style={{ backgroundColor: item }}
+                        ></div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
             <p className="h-[40px] rounded-[20px] bg-[#16A34A] mt-[32px]"></p>
           </div>
         </div>
-        <div className="absolute top-0 left-0 hidden">
-          {Icon.map((item) => {
-            return (
-              <div className="grid grid-cols-6 p-[24px] bg-white ">
-                <IconProps {...item} />
-              </div>
-            )
-          })}
-          {color.map((item) => {
-            return (
-              <div className="grid grid-cols-6 p-[24px] bg-white ">
-                <Color {...item} />
-              </div>
-            )
-          })}
-        </div>
       </div>
-    </div>
-  );
-}
-
-export const IconProps = (props) => {
-  return (
-     <div className="border-[1px]">
-      <p className="border-[1px]">{props.title}</p>
-     </div>
-  );
-};
-export const Color = (props) => {
-  return (
-    <div className="flex gap-[16px] py-[24px] border-t-[1px] border-black">
-      <div className="w-[24px] h-[24px] rounded-full border-[1px]">{props.color}</div>
     </div>
   );
 }

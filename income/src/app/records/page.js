@@ -1,5 +1,6 @@
 "use client";
 import Header from "@/components/Header";
+import Add from "@/components/records/Add";
 import Income from "@/components/records/Income";
 import Records1 from "@/components/records/Records1";
 import Records2 from "@/components/records/Records2";
@@ -11,12 +12,15 @@ export default function Home() {
   const [isIncomeModalShown, setIsIncomeModalShown] = useState(false);
   const [isAddModalShown, setIsAddModalShown] = useState(false);
   const [isCategory, setIsCategory] = useState(false);
+  const [isIcon, setIsIcon] = useState(true);
 
   return (
     <>
       <Header />
       <ModalContext.Provider
         value={{
+          isIcon,
+          setIsIcon,
           isCategory,
           setIsCategory,
           isIncomeModalShown,
@@ -25,12 +29,14 @@ export default function Home() {
           setIsAddModalShown,
         }}
       >
-        <div className="px-[120px] flex gap-[40px] relative">
-          <Records1 />
-          <Records2 />
+        <div className="relative">
+          <div className="px-[120px] flex gap-[40px] relative">
+            <Records1 />
+            <Records2 />
+          </div>
         </div>
         {isIncomeModalShown && <Income />}
-        {/* {isAddModalShown && <Choose />} */}
+        {isCategory && <Add />}
       </ModalContext.Provider>
     </>
   );

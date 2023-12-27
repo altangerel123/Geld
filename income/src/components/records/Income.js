@@ -3,25 +3,55 @@
 import { ModalContext } from "@/app/records/page";
 import { useContext, useState } from "react";
 import styles from "@/components/records/income.module.css";
-import Choose from "./Choose";
-import Add from "./Add";
 
 export default function Income() {
   const {
+    setIsCategory,
     isIncomeModalShown,
     setIsIncomeModalShown,
     setIsAddModalShown,
     isAddModalShown,
-    isCategory,
   } = useContext(ModalContext);
 
   const [expense, setExpense] = useState("#0166FF");
   const [income, setIncome] = useState("blue");
-
   const Clicker = () => {
     setExpense(!expense);
     setIncome(!income);
   };
+  const [selects] = useState([
+    {
+      id: 2,
+      title: "Home",
+      image: "select.png",
+    },
+    {
+      id: 3,
+      title: "Gift",
+      image: "select2.png",
+    },
+    {
+      id: 4,
+      title: "Food",
+      image: "select3.png",
+    },
+    {
+      id: 5,
+      title: "Drink",
+      image: "select4.png",
+    },
+    {
+      id: 6,
+      title: "Taxi",
+      image: "select5.png",
+    },
+    {
+      id: 7,
+      title: "Shopping",
+      image: "select6.png",
+    },
+  ]);
+
   return (
     <div
       className={styles.container}
@@ -74,20 +104,35 @@ export default function Income() {
               <p className="text-[16px] font-normal leading-[24px]">Amount</p>
               <p className="">$000.00</p>
             </div>
-            <div>
+            <div className="relative">
               <h2 className="text-[16px] font-normal leading-[24px]">
                 Category
               </h2>
               <div
-                className="w-full border-[1px] p-[10px] mb-[10px] relative"
+                className="w-full border-[1px] p-[10px] mb-[10px]"
                 onClick={() => {
-                  setIsAddModalShown(false);
+                  setIsAddModalShown(true);
                 }}
               >
                 Choose
-                <Choose />
               </div>
-              {isAddModalShown && <Choose />}
+              <div style={{ display: isAddModalShown ? "flex" : "none" }}>
+                <div className="w-full absolute top-[70px] left-0">
+                  <div
+                    className="flex w-full p-[16px] items-start gap-[12px] border-b-[1px] bg-white"
+                    onClick={() => {
+                      setIsCategory(true);
+                      setIsIncomeModalShown(false);
+                    }}
+                  >
+                    <img className="w-[24px] h-[24px]" src="PlusCircle.png" />
+                    <p className="text-[16px] font-narmal">Add Category</p>
+                  </div>
+                  {selects.map((item) => {
+                    return <Select {...item} />;
+                  })}
+                </div>
+              </div>
             </div>
             <div className="w-1/2 flex gap-[8px] rounded-[8px] mb-[20px]">
               <div>
@@ -134,3 +179,14 @@ export default function Income() {
     </div>
   );
 }
+export const Select = (props) => {
+  return (
+    <div
+      className="flex p-[16px] items-start gap-[12px]  bg-white"
+      onClick={() => {}}
+    >
+      <img className="w-[24px] h-[24px]" src={props.image} />
+      <p className="text-[16px] font-narmal">{props.title}</p>
+    </div>
+  );
+};
