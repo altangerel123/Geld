@@ -2,7 +2,6 @@
 import styles from "@/components/records/income.module.css";
 import { ModalContext } from "@/app/records/page";
 import { useContext, useState } from "react";
-
 import { FaHouse, FaTractor } from "react-icons/fa6";
 import { PiHouseLineFill } from "react-icons/pi";
 import { PiIdentificationBadgeFill } from "react-icons/pi";
@@ -40,39 +39,41 @@ export default function Add() {
     useContext(ModalContext);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [color, setColor] = useState("");
+  const style = { colors: color };
   const Icon = [
-    <FaHouse />,
-    <PiHouseLineFill />,
-    <PiIdentificationBadgeFill />,
-    <PiIdentificationCardFill />,
-    <PiLadderBold />,
-    <BsIntersect />,
-    <FaRegImage />,
-    <FaMagnifyingGlassPlus />,
-    <FaMicrophone />,
-    <SiMicrosoftexcel />,
+    <FaHouse {...style} />,
+    <PiHouseLineFill {...{ style }} />,
+    <PiIdentificationBadgeFill {...style} />,
+    <PiIdentificationCardFill {...style} />,
+    <PiLadderBold {...style} />,
+    <BsIntersect {...style} />,
+    <FaRegImage {...style} />,
+    <FaMagnifyingGlassPlus {...style} />,
+    <FaMicrophone {...style} />,
+    <SiMicrosoftexcel {...style} />,
 
-    <PiNotepadFill />,
-    <MdOutlinePlaylistPlay />,
-    <RiLeafFill />,
-    <PiNumberFiveFill />,
-    <PiNumberSevenFill />,
-    <PiRoadHorizonFill />,
-    <PiHourglassSimpleMediumFill />,
-    <RiAnchorLine />,
-    <PiBezierCurveFill />,
-    <PiExcludeFill />,
+    <PiNotepadFill {...style} />,
+    <MdOutlinePlaylistPlay {...style} />,
+    <RiLeafFill {...style} />,
+    <PiNumberFiveFill {...style} />,
+    <PiNumberSevenFill {...style} />,
+    <PiRoadHorizonFill {...style} />,
+    <PiHourglassSimpleMediumFill {...style} />,
+    <RiAnchorLine {...style} />,
+    <PiBezierCurveFill {...style} />,
+    <PiExcludeFill {...style} />,
 
-    <MdVignette />,
-    <FaBaseballBall />,
-    <FaQuestionCircle />,
-    <PiExamFill />,
-    <PiWatchFill />,
-    <PiGlobeFill />,
-    <PiOrangeSliceFill />,
-    <PiPeaceFill />,
-    <PiToiletPaperFill />,
-    <FaPencilAlt />,
+    <MdVignette {...style} />,
+    <FaBaseballBall {...style} />,
+    <FaQuestionCircle {...style} />,
+    <PiExamFill {...style} />,
+    <PiWatchFill {...style} />,
+    <PiGlobeFill {...style} />,
+    <PiOrangeSliceFill {...style} />,
+    <PiPeaceFill {...style} />,
+    <PiToiletPaperFill {...style} />,
+    <FaPencilAlt {...style} />,
   ];
   const Color = [
     "#0166FF",
@@ -140,12 +141,16 @@ export default function Add() {
                     );
                   })}
                   <div className="grid grid-cols-7 gap-[40px] p-4">
-                    {Color.map((item) => {
+                    {Color.map((colors, index) => {
                       return (
                         <div
                           className="w-[24px] h-[24px] rounded-full border-t-[1px]"
-                          key={item}
-                          style={{ backgroundColor: item }}
+                          key={index}
+                          style={{ backgroundColor: colors }}
+                          onClick={() => {
+                            setColor(colors);
+                            console.log(colors);
+                          }}
                         ></div>
                       );
                     })}

@@ -12,6 +12,7 @@ export default function Income() {
     setIsAddModalShown,
     isAddModalShown,
   } = useContext(ModalContext);
+  const [categoryAdd, setCategoryAdd] = useState(false);
 
   const [expense, setExpense] = useState("#0166FF");
   const [income, setIncome] = useState("blue");
@@ -51,7 +52,6 @@ export default function Income() {
       image: "select6.png",
     },
   ]);
-
   return (
     <div
       className={styles.container}
@@ -114,7 +114,7 @@ export default function Income() {
                   setIsAddModalShown(true);
                 }}
               >
-                Choose
+                {categoryAdd}
               </div>
               <div style={{ display: isAddModalShown ? "flex" : "none" }}>
                 <div className="w-full absolute top-[70px] left-0">
@@ -129,7 +129,17 @@ export default function Income() {
                     <p className="text-[16px] font-narmal">Add Category</p>
                   </div>
                   {selects.map((item) => {
-                    return <Select {...item} />;
+                    return (
+                      <div
+                        className="flex p-[16px] items-start gap-[12px]  bg-white"
+                        onClick={() => {
+                          setCategoryAdd(item);
+                        }}
+                      >
+                        <img className="w-[24px] h-[24px]" src={item.image} />
+                        <p className="text-[16px] font-narmal">{item.title}</p>
+                      </div>
+                    );
                   })}
                 </div>
               </div>
@@ -179,14 +189,3 @@ export default function Income() {
     </div>
   );
 }
-export const Select = (props) => {
-  return (
-    <div
-      className="flex p-[16px] items-start gap-[12px]  bg-white"
-      onClick={() => {}}
-    >
-      <img className="w-[24px] h-[24px]" src={props.image} />
-      <p className="text-[16px] font-narmal">{props.title}</p>
-    </div>
-  );
-};

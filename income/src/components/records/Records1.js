@@ -114,7 +114,15 @@ export default function Records1() {
         </div>
         <div className="flex flex-col gap-[8px]">
           {category.map((item) => {
-            return <Category {...item} />;
+            return (
+              <div className="flex justify-between">
+                <div className="flex leading-[24px] gap-[8px]">
+                  <img className="w-[20px] h-[20px]" src={item.image} />
+                  <p className="text-[16px] font-narmal">{item.title}</p>
+                </div>
+                <img className="w-[20px] h-[20px]" src={item.img} />
+              </div>
+            );
           })}
         </div>
         <button className="text-[16px] font-normal leading-[24px]">
@@ -144,14 +152,3 @@ export default function Records1() {
     </div>
   );
 }
-export const Category = (props) => {
-  return (
-    <div className="flex justify-between">
-      <div className="flex leading-[24px] gap-[8px]">
-        <img className="w-[20px] h-[20px]" src={props.image} />
-        <p className="text-[16px] font-narmal">{props.title}</p>
-      </div>
-      <img className="w-[20px] h-[20px]" src={props.img} />
-    </div>
-  );
-};
