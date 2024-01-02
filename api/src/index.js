@@ -12,9 +12,13 @@ app.use(bodyParser.json());
 
 app.post("/signup", async (req, res) => {
   const { email, password } = req.body;
+
   const filePath = "src/data/users.json";
+
   const usersRaw = await fs.readFile(filePath, "utf8");
+
   const users = JSON.parse(usersRaw);
+
   const user = users.find((user) => user.email === email);
   if (user) {
     return res.status(409).json({
@@ -24,6 +28,10 @@ app.post("/signup", async (req, res) => {
   users.push({
     email,
     password,
+  });
+  await fs.writeFile(filePath, JSON.stringify(users));
+  res.json({
+    message: "User created",
   });
 });
 
