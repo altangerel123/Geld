@@ -1,9 +1,9 @@
 "use client";
 
-import { api } from "../app/common/axios";
 import { useRouter } from "next/navigation";
 const { createContext, useState, useEffect, useContext } = require("react");
 import { toast } from "react-toastify";
+
 
 const AuthContext = createContext();
 
@@ -22,9 +22,14 @@ export const AuthProvider = ({ children }) => {
         email,
         password,
       });
+
       const { token } = data;
+
+
       localStorage.setItem("token", token);
+      
       setIsLoggedIn(true);
+
       router.push("/dashboard");
     } catch (error) {
       if (error.response) {
@@ -53,11 +58,14 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={{ signIn, isLoading, isLoggedIn }}>
       {isReady && children}
       <div className="w-full h-[1024px] flex flex-col justify-center items-center bg-white">
-        <div className="flex justify-center items-center mb-[48px]"></div>
-        <p className="text-[16px] font-normal mt-[16px]">
-          <a href="/login1">Түр хүлээнэ үү...</a>
-        </p>
+      <div className="flex justify-center items-center mb-[48px]">
+        
       </div>
+     
+      <p className="text-[16px] font-normal mt-[16px]">
+        <a href="/login1">Түр хүлээнэ үү...</a>
+      </p>
+    </div>
     </AuthContext.Provider>
   );
 };
