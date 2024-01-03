@@ -1,8 +1,8 @@
 "use client";
 
-import { ModalContext } from "@/app/records/page";
+import { ModalContext } from "../../app/records/page";
 import { useContext, useState } from "react";
-import styles from "@/components/records/income.module.css";
+import styles from "../../components/records/income.module.css";
 
 export default function Income() {
   const {

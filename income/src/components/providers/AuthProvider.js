@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 const { createContext, useState, useEffect, useContext } = require("react");
 import { toast } from "react-toastify";
-
+import { api } from "../../app/common/axios";
 
 const AuthContext = createContext();
 
@@ -14,23 +14,22 @@ export const AuthProvider = ({ children }) => {
 
   const router = useRouter();
 
-  const signIn = async (email, password) => {
+  const signUp = async (email, password) => {
     setIsLoading(true);
 
     try {
-      const { data } = await api.post("/login", {
+      const { data } = await api.post("/sign-up", {
         email,
         password,
       });
 
       const { token } = data;
 
-
       localStorage.setItem("token", token);
-      
+
       setIsLoggedIn(true);
 
-      router.push("/dashboard");
+      router.push("/login");
     } catch (error) {
       if (error.response) {
         toast.error(error.response.data.message);
@@ -55,17 +54,13 @@ export const AuthProvider = ({ children }) => {
   });
 
   return (
-    <AuthContext.Provider value={{ signIn, isLoading, isLoggedIn }}>
+    <AuthContext.Provider value={{ signUp, isLoading, isLoggedIn }}>
       {isReady && children}
       <div className="w-full h-[1024px] flex flex-col justify-center items-center bg-white">
-      <div className="flex justify-center items-center mb-[48px]">
-        
+        <p className="text-[16px] font-normal mt-[16px]">
+          <a href="/login1">Түр хүлээнэ үү...</a>
+        </p>
       </div>
-     
-      <p className="text-[16px] font-normal mt-[16px]">
-        <a href="/login1">Түр хүлээнэ үү...</a>
-      </p>
-    </div>
     </AuthContext.Provider>
   );
 };

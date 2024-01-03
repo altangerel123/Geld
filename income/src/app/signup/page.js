@@ -1,5 +1,13 @@
 "use client";
+
+import { useState } from "react";
+import { useAuth } from "../../components/providers/AuthProvider";
+
 export default function Home() {
+  const { signUp } = useAuth();
+
+  const [email, setEmail] = useState("");
+  const [password, setPaswsword] = useState("");
   return (
     <div className="w-full h-[1024px] flex bg-blue-600">
       <div className="w-1/2 h-full bg-white flex justify-center items-center">
@@ -23,19 +31,32 @@ export default function Home() {
             <input
               className="border-[2px] border-[#A3A3A3] rounded-[5px] p-[16px]"
               type="email"
+              value={email}
               placeholder="Email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
             <input
               className="border-[2px] border-[#A3A3A3] rounded-[5px] p-[16px]"
               type="password"
+              value={password}
               placeholder="Password"
+              onChange={(e) => {
+                setPaswsword(e.target.value);
+              }}
             />
             <input
               className="border-[2px] border-[#A3A3A3] rounded-[5px] p-[16px]"
               type="password"
               placeholder="Re-assword"
             />
-            <button className="text-white border-[1px] bg-blue-600 rounded-[5px] p-[10px]">
+            <button
+              className="text-white border-[1px] bg-blue-600 rounded-[5px] p-[10px]"
+              onClick={() => {
+                signUp(email, password);
+              }}
+            >
               Sign up
             </button>
           </div>

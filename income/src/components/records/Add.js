@@ -1,6 +1,6 @@
 "use client";
-import styles from "@/components/records/income.module.css";
-import { ModalContext } from "@/app/records/page";
+import styles from "../../components/records/income.module.css";
+import { ModalContext } from "../../app/records/page";
 import { useContext, useState } from "react";
 import { FaHouse, FaTractor } from "react-icons/fa6";
 import { PiHouseLineFill } from "react-icons/pi";

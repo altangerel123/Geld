@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.post("/sign-in", async (req, res) => {
+app.post("/sign-up", async (req, res) => {
   const { email, password } = req.body;
 
   const filePath = "src/data/users.json";

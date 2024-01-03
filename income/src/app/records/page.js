@@ -1,9 +1,9 @@
 "use client";
-import Header from "@/components/Header";
-import Add from "@/components/records/Add";
-import Income from "@/components/records/Income";
-import Records1 from "@/components/records/Records1";
-import Records2 from "@/components/records/Records2";
+import Header from "../../components/Header";
+import Add from "../../components/records/Add";
+import Income from "../../components/records/Income";
+import Records1 from "../../components/records/Records1";
+import Records2 from "../../components/records/Records2";
 import { createContext, useState } from "react";
 
 export const ModalContext = createContext();

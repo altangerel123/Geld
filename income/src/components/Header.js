@@ -33,10 +33,12 @@ export default function Header() {
         <button className="p-[12px] bg-blue-600 text-white rounded-[50px]">
           <a> + Records</a>
         </button>
-        <img
-          className=" border-[1px] border-black w-[50px] h-[50px] rounded-full"
-          src="Placeholder.png"
-        />
+        <a href="/pro">
+          <img
+            className=" border-[1px] border-black w-[50px] h-[50px] rounded-full"
+            src="Placeholder.png"
+          ></img>
+        </a>
       </div>
     </div>
   );

@@ -10,30 +10,6 @@ export default function Dashboard3() {
       description: "3 hours ago",
       image: "House (1).png",
     },
-    {
-      id: 2,
-      title: "Lending & Renting",
-      description: "3 hours ago",
-      image: "House (1).png",
-    },
-    {
-      id: 3,
-      title: "Lending & Renting",
-      description: "3 hours ago",
-      image: "House (1).png",
-    },
-    {
-      id: 4,
-      title: "Lending & Renting",
-      description: "3 hours ago",
-      image: "House (1).png",
-    },
-    {
-      id: 5,
-      title: "Lending & Renting",
-      description: "3 hours ago",
-      image: "House (1).png",
-    },
   ]);
   return (
     <div className="px-[120px]">
@@ -42,34 +18,24 @@ export default function Dashboard3() {
       </h2>
       {card.map((item) => {
         return (
-          <Card
-            key={item.id}
-            title={item.title}
-            description={item.description}
-            image={item.image}
-          />
+          <div className="bg-white py-[20px]">
+            <div className="flex px-[24px] gap-[16px]">
+              <div>
+                <img
+                  className="w-[40px] h-[40px] p-[10px] bg-blue-700 rounded-full"
+                  src={item.image}
+                />
+              </div>
+              <div>
+                <h3 className="text-[16px] font-normal">{item.title}</h3>
+                <p className="text-[#6B7280] text-[12px] font-normal">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          </div>
         );
       })}
     </div>
   );
 }
-export const Card = (props) => {
-  return (
-    <div className="bg-white py-[20px]">
-      <div className="flex px-[24px] gap-[16px]">
-        <div>
-          <img
-            className="w-[40px] h-[40px] p-[10px] bg-blue-700 rounded-full"
-            src={props.image}
-          />
-        </div>
-        <div>
-          <h3 className="text-[16px] font-normal">{props.title}</h3>
-          <p className="text-[#6B7280] text-[12px] font-normal">
-            {props.description}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
