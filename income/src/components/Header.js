@@ -1,10 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-// import { useState } from "react";
 
 export default function Header() {
-  // const [isItem, isSetItem] = useState(false);
   const router = useRouter();
   return (
     <div className="h-[80px] flex py-[16px] px-[120px] justify-between border-[1px] mb-[40px] bg-white">
@@ -15,7 +13,6 @@ export default function Header() {
           onClick={() => {
             router.push("/dashboard");
           }}
-          // style={{ fontWeight: isItem ? "800" : "400" }}
         >
           Dashboard
         </h2>
@@ -24,7 +21,6 @@ export default function Header() {
           onClick={() => {
             router.push("/records");
           }}
-          // style={{ fontWeight: isItem ? "800" : "400" }}
         >
           Records
         </h2>

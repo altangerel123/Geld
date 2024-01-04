@@ -13,12 +13,15 @@ export default function Home() {
   const [isAddModalShown, setIsAddModalShown] = useState(false);
   const [isCategory, setIsCategory] = useState(false);
   const [isIcon, setIsIcon] = useState(true);
+  const [isPro, setIsPro] = useState(false);
 
   return (
     <>
       <Header />
       <ModalContext.Provider
         value={{
+          isPro,
+          setIsPro,
           isIcon,
           setIsIcon,
           isCategory,
