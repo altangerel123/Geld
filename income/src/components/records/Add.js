@@ -1,7 +1,8 @@
 "use client";
 import styles from "../../components/records/income.module.css";
-import { ModalContext } from "../../app/records/page";
+import { ModalContext } from "../../app/layout";
 import { useContext, useState } from "react";
+
 import { FaHouse, FaTractor } from "react-icons/fa6";
 import { PiHouseLineFill } from "react-icons/pi";
 import { PiIdentificationBadgeFill } from "react-icons/pi";
@@ -90,7 +91,7 @@ export default function Add() {
       className={styles.icon}
       style={{ display: isCategory ? "flex" : "flex" }}
     >
-      <div className="flex justify-center items-center bg-white rounded-[12px]">
+      <div className="flex justify-center items-center bg-white rounded-[12px] text-black">
         <div className="border-[1px] rounded-[10px] bg-white">
           <div className="flex justify-between border-b-[1px] p-[24px]">
             <h1 className="text-[20px] font-semibold leading-[28px]">
@@ -126,7 +127,7 @@ export default function Add() {
                 className="absolute top-[60px] left-0"
                 style={{ display: isIcon ? "none" : "flex" }}
               >
-                <div className="grid grid-cols-6 bg-white">
+                <div className="grid grid-cols-6 bg-black">
                   {Icon.map((icon, item) => {
                     return (
                       <div

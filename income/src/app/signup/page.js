@@ -9,7 +9,7 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPaswsword] = useState("");
   return (
-    <div className="w-full h-[1024px] flex bg-blue-600">
+    <div className="w-full h-screen flex bg-blue-600">
       <div className="w-1/2 h-full bg-white flex justify-center items-center">
         <div className="max-w-[384px] flex flex-col gap-[40px]">
           <div className="flex justify-center items-center gap-[9px">

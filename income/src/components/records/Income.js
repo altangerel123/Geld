@@ -59,7 +59,7 @@ export default function Income() {
         display: isIncomeModalShown ? "flex" : "none",
       }}
     >
-      <div className="w-[728px] bg-white border-[1px] flex flex-col gap-[20px]">
+      <div className="w-[728px] bg-white border-[1px] flex flex-col gap-[20px] text-black">
         <div className="flex justify-between px-[24px] py-[20px] border-b-[1px]">
           <h1 className="text-[20px] font-semibold leading-[28px]">
             Add Record

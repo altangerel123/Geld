@@ -7,11 +7,11 @@ import Dashboard3 from "../../components/dashboard/Dashboard3";
 
 export default function Home() {
   return (
-    <>
-      <Header />
+    <div className="w-full h-screen text-black">
+      {/* <Header /> */}
       <Dashboard1 />
       <Dashboard2 />
       <Dashboard3 />
-    </>
+    </div>
   );
 }

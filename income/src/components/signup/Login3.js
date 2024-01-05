@@ -5,7 +5,7 @@ import { Prame2 } from "../../../public/assets/Prame2";
 
 export default function login3(props) {
   return (
-    <div className="w-full h-[1024px] flex flex-col pt-[150px] items-center bg-white">
+    <div className="w-full h-screen flex flex-col pt-[150px] items-center bg-white">
       <div className="flex justify-center items-center gap-[9px] mb-[141px]">
         <Prame2 />
       </div>

@@ -40,6 +40,32 @@ export const AuthProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
+  const login = async (email, password) => {
+    setIsLoading(true);
+
+    try {
+      const { data } = await api.post("/login", {
+        email,
+        password,
+      });
+
+      const { token } = data;
+
+      localStorage.setItem("token", token);
+
+      setIsLoggedIn(true);
+
+      router.push("/login");
+    } catch (error) {
+      if (error.response) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error(error.message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     setIsReady(false);
@@ -54,13 +80,16 @@ export const AuthProvider = ({ children }) => {
   });
 
   return (
-    <AuthContext.Provider value={{ signUp, isLoading, isLoggedIn }}>
+    <AuthContext.Provider value={{ signUp, isLoading, login, isLoggedIn }}>
       {isReady && children}
-      <div className="w-full h-[1024px] flex flex-col justify-center items-center bg-white">
-        <p className="text-[16px] font-normal mt-[16px]">
-          <a href="/login1">Түр хүлээнэ үү...</a>
-        </p>
-      </div>
+      {!isReady && (
+        <div className="w-full h-screen flex flex-col justify-center items-center bg-white">
+          <div className="flex justify-center items-center mb-[48px]"></div>
+          <p className="text-[16px] font-normal mt-[16px]">
+            <a href="/login1">Түр хүлээнэ үү...</a>
+          </p>
+        </div>
+      )}
     </AuthContext.Provider>
   );
 };

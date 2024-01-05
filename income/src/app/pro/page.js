@@ -1,23 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useContext } from "react";
+import { ModalContext } from "../records/page";
 
-export default function Home() {
-  const { isPro, setIsPro } = useState(true);
+export default function Pro() {
+  const { profile, clickProfile } = useContext(ModalContext);
   return (
     <div
-      className="w-full h-screen flex justify-center items-center bg-white"
-      style={{ display: isPro ? "none" : "flex" }}
+      className="w-full h-screen flex justify-center items-center bg-white absolute top-0 left-0"
+      style={{ display: clickProfile ? "flex" : "flex" }}
     >
+      <div>{profile && profile.email}</div>
+      <div>{profile && profile.password}</div>
       <div className="w-[600px] h-[500px] bg-slate-400">
-        <p
-          className="flex justify-end p-[20px]"
-          onClick={() => {
-            setIsPro();
-          }}
-        >
-          X
-        </p>
+        <p className="flex justify-end p-[20px]">X</p>
       </div>
     </div>
   );

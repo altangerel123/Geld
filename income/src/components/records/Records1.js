@@ -1,6 +1,6 @@
 "use client";
 import { useContext, useState } from "react";
-import { ModalContext } from "../../app/records/page";
+import { ModalContext } from "../../app/layout";
 
 export default function Records1() {
   const { isIncomeModalShown, setIsIncomeModalShown } =

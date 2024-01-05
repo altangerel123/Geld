@@ -4,12 +4,12 @@ import { useState } from "react";
 import { useAuth } from "./providers/AuthProvider";
 
 export const Login = () => {
-  const { signIn } = useAuth();
+  const { login } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPaswsword] = useState("");
   return (
-    <div className="w-full h-[1224px] flex bg-blue-700">
+    <div className="w-full h-[1224px] flex bg-blue-700 text-black">
       <div className="w-1/2 h-full bg-white flex justify-center items-center">
         <div className="max-w-[384px] flex flex-col gap-[40px]">
           <div className="flex justify-center items-center gap-[9px">
@@ -27,13 +27,24 @@ export const Login = () => {
               className="border-[2px] border-[#A3A3A3] rounded-[5px] p-[16px]"
               type="email"
               placeholder="Email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
             <input
               className="border-[2px] border-[#A3A3A3] rounded-[5px] p-[16px]"
               type="password"
               placeholder="Password"
+              onChange={(e) => {
+                setPaswsword(e.target.value);
+              }}
             />
-            <button className="text-white border-[1px] bg-blue-600 rounded-[5px] p-[10px]">
+            <button
+              className="text-white border-[1px] bg-blue-600 rounded-[5px] p-[10px]"
+              onClick={() => {
+                login(email, password);
+              }}
+            >
               Login
             </button>
           </div>
