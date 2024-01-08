@@ -5,11 +5,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "../components/providers/AuthProvider";
+
 import { useState } from "react";
-import { createContext } from "vm";
+import { createContext } from "react";
 
 export const ModalContext = createContext();
-
 export default function RootLayout({ children }) {
   const [isIncomeModalShown, setIsIncomeModalShown] = useState(false);
   const [isAddModalShown, setIsAddModalShown] = useState(false);
@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
       const { user1 } = data;
       setProfile(user1[0]);
     } catch (error) {
-      toast.error(error.message);
+      // toast.error(error.message);
     }
   };
 

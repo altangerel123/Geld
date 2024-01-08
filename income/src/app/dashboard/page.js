@@ -8,7 +8,7 @@ import Dashboard3 from "../../components/dashboard/Dashboard3";
 export default function Home() {
   return (
     <div className="w-full h-screen text-black">
-      {/* <Header /> */}
+      <Header />
       <Dashboard1 />
       <Dashboard2 />
       <Dashboard3 />

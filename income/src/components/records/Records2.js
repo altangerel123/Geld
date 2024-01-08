@@ -12,48 +12,16 @@ export default function Records2() {
       image: "House (1).png",
       description: "-1000$",
     },
-    // {
-    //   id: 2,
-    //   title: "Food & Drinks",
-    //   input: "checkbox",
-    //   time: "12:32",
-    //   image: "ForkKnife.png",
-    //   description: "-1000$",
-    // },
-    // {
-    //   id: 1,
-    //   title: "Food & Drinks",
-    //   input: "checkbox",
-    //   time: "12:32",
-    //   image: "ForkKnife.png",
-    //   description: "-1000$",
-    // },
-    // {
-    //   id: 1,
-    //   title: "Food & Drinks",
-    //   input: "checkbox",
-    //   time: "12:32",
-    //   image: "ForkKnife.png",
-    //   description: "-1000$",
-    // },
-    // {
-    //   id: 1,
-    //   title: "Food & Drinks",
-    //   input: "checkbox",
-    //   time: "12:32",
-    //   image: "ForkKnife.png",
-    //   description: "-1000$",
-    // },
   ]);
   return (
     <div className="w-2/3">
       <div className="flex justify-between mb-[24px]">
         <div className="flex gap-[4px] items-center text-white">
-          <p className="w-[32px] h-[32px] bg-[#E5E7EB] flex justify-center items-center">
+          <p className="w-[32px] h-[32px] bg-black flex justify-center items-center">
             {"<"}
           </p>
           <p className="text-white">Last 30 Days</p>
-          <p className="w-[32px] h-[32px] bg-[#E5E7EB] flex justify-center items-center">
+          <p className="w-[32px] h-[32px] bg-black flex justify-center items-center">
             {">"}
           </p>
         </div>
