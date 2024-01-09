@@ -12,7 +12,7 @@ export const Login = () => {
     <div className="w-full h-[1224px] flex bg-blue-700 text-black">
       <div className="w-1/2 h-full bg-white flex justify-center items-center">
         <div className="max-w-[384px] flex flex-col gap-[40px]">
-          <div className="flex justify-center items-center gap-[9px">
+          <div className="flex justify-center items-center gap-[9px]">
             <img className="w-[23px] h-[23px]" src="Vector.png" />
             <h1 className="text-[30px] font-semibold">Geld</h1>
           </div>

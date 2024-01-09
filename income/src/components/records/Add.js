@@ -41,7 +41,7 @@ export default function Add() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [color, setColor] = useState("");
-  const style = { colors: color };
+  const style = { color: color };
   const Icon = [
     <FaHouse {...style} />,
     <PiHouseLineFill {...{ style }} />,
@@ -111,14 +111,11 @@ export default function Add() {
             <div className="flex gap-[12px] relative">
               <div
                 className="flex p-[16px] border-[1px] bg-[#F9FAFB] rounded-[8px] "
-                onClick={() => {
-                  setIsIcon(false);
-                }}
+                onClick={() => setIsIcon(!isIcon)}
               >
                 <p className="w-[24px] h-[24px]">{isOpen}</p>
                 <img className="w-[24px] h-[24px]" src="Icon3.png" />
               </div>
-
               <div className="flex border-[1px] p-[16px] bg-[#F9FAFB] rounded-[8px]">
                 <input type="text" placeholder="Name" />
                 <img className="" src="Icon3.png" />
@@ -127,7 +124,7 @@ export default function Add() {
                 className="absolute top-[60px] left-0"
                 style={{ display: isIcon ? "none" : "flex" }}
               >
-                <div className="grid grid-cols-6 bg-black">
+                <div className="grid grid-cols-6 bg-white">
                   {Icon.map((icon, item) => {
                     return (
                       <div
@@ -159,7 +156,9 @@ export default function Add() {
                 </div>
               </div>
             </div>
-            <p className="h-[40px] rounded-[20px] bg-[#16A34A] mt-[32px]"></p>
+            <p className="h-[40px] rounded-[20px] bg-[#16A34A] mt-[32px] flex justify-center items-center ">
+              Add Category
+            </p>
           </div>
         </div>
       </div>

@@ -43,13 +43,17 @@ export default function Records2() {
         <p>-35000$</p>
       </div>
       <div className="flex flex-col  gap-[12px]">
-        <h2 className="text-[16px] font-semibold leading-[24px]">Today</h2>
+        <h2 className="text-[16px] font-semibold leading-[24px] text-white">
+          Today
+        </h2>
         {today.map((item) => {
           return <Today {...item} />;
         })}
       </div>
       <div className="flex flex-col  gap-[12px] mt-[24px]">
-        <h2 className="text-[16px] font-semibold leading-[24px]">Yesterday</h2>
+        <h2 className="text-[16px] font-semibold leading-[24px] text-white">
+          Yesterday
+        </h2>
         {today.map((item) => {
           return <Today {...item} />;
         })}

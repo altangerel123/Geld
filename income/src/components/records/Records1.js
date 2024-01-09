@@ -3,8 +3,7 @@ import { useContext, useState } from "react";
 import { ModalContext } from "../../app/layout";
 
 export default function Records1() {
-  const { isIncomeModalShown, setIsIncomeModalShown } =
-    useContext(ModalContext);
+  const { setIsCategory } = useContext(ModalContext);
 
   const [category] = useState([
     {
@@ -80,7 +79,7 @@ export default function Records1() {
       <button
         className="px-[12px] h-[32px] rounded-[20px] bg-blue-600 text-white"
         onClick={() => {
-          setIsIncomeModalShown(true);
+          setIsCategory(true);
         }}
       >
         + Add

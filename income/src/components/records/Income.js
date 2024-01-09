@@ -1,6 +1,6 @@
 "use client";
 
-import { ModalContext } from "../../app/records/page";
+import { ModalContext } from "../../app/layout";
 import { useContext, useState } from "react";
 import styles from "../../components/records/income.module.css";
 

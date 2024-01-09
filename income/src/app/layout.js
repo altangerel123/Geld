@@ -8,6 +8,8 @@ import { AuthProvider } from "../components/providers/AuthProvider";
 
 import { useState } from "react";
 import { createContext } from "react";
+import Income from "../components/records/Income";
+import Add from "../components/records/Add";
 
 export const ModalContext = createContext();
 export default function RootLayout({ children }) {

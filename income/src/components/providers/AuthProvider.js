@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 const { createContext, useState, useEffect, useContext } = require("react");
+import Loading from "../../app/loading";
 import { toast } from "react-toastify";
 import { api } from "../../app/common/axios";
 
@@ -82,14 +83,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={{ signUp, isLoading, login, isLoggedIn }}>
       {isReady && children}
-      {!isReady && (
-        <div className="w-full h-screen flex flex-col justify-center items-center bg-white">
-          <div className="flex justify-center items-center mb-[48px]"></div>
-          <p className="text-[16px] font-normal mt-[16px]">
-            <a href="/login1">Түр хүлээнэ үү...</a>
-          </p>
-        </div>
-      )}
+      {!isReady && <Loading />}
     </AuthContext.Provider>
   );
 };
