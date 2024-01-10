@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <div className="relative h-screen">
         <Header />
-        <div className="px-[120px] flex gap-[40px] relative text-black">
+        <div className="px-[240px] flex gap-[40px] relative text-black">
           <Records1 />
           <Records2 />
         </div>

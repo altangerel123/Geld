@@ -12,69 +12,69 @@ export default function Records1() {
       image: "Icon2.png",
       img: "Icon1.png",
     },
-    {
-      id: 2,
-      title: "Shopping",
-      image: "Icon2.png",
-      img: "Icon1.png",
-    },
-    {
-      id: 3,
-      title: "Housing",
-      image: "Icon2.png",
-      img: "Icon1.png",
-    },
-    {
-      id: 4,
-      title: "Transportation",
-      image: "Icon2.png",
-      img: "Icon1.png",
-    },
-    {
-      id: 5,
-      title: "Vehicle",
-      image: "Icon2.png",
-      img: "Icon1.png",
-    },
-    {
-      id: 6,
-      title: "Life & Entertainment",
-      image: "Icon2.png",
-      img: "Icon1.png",
-    },
-    {
-      id: 7,
-      title: "Communication, PC",
-      image: "Icon2.png",
-      img: "Icon1.png",
-    },
-    {
-      id: 8,
-      title: "Financial expenses",
-      image: "Icon2.png",
-      img: "Icon1.png",
-    },
-    {
-      id: 9,
-      title: "Investments",
-      image: "Icon2.png",
-      img: "Icon1.png",
-    },
-    {
-      id: 10,
-      title: "Income",
-      image: "Icon2.png",
-      img: "Icon1.png",
-    },
-    {
-      id: 11,
-      title: "Others",
-      image: "Icon2.png",
-      img: "Icon1.png",
-    },
+    // {
+    //   id: 2,
+    //   title: "Shopping",
+    //   image: "Icon2.png",
+    //   img: "Icon1.png",
+    // },
+    // {
+    //   id: 3,
+    //   title: "Housing",
+    //   image: "Icon2.png",
+    //   img: "Icon1.png",
+    // },
+    // {
+    //   id: 4,
+    //   title: "Transportation",
+    //   image: "Icon2.png",
+    //   img: "Icon1.png",
+    // },
+    // {
+    //   id: 5,
+    //   title: "Vehicle",
+    //   image: "Icon2.png",
+    //   img: "Icon1.png",
+    // },
+    // {
+    //   id: 6,
+    //   title: "Life & Entertainment",
+    //   image: "Icon2.png",
+    //   img: "Icon1.png",
+    // },
+    // {
+    //   id: 7,
+    //   title: "Communication, PC",
+    //   image: "Icon2.png",
+    //   img: "Icon1.png",
+    // },
+    // {
+    //   id: 8,
+    //   title: "Financial expenses",
+    //   image: "Icon2.png",
+    //   img: "Icon1.png",
+    // },
+    // {
+    //   id: 9,
+    //   title: "Investments",
+    //   image: "Icon2.png",
+    //   img: "Icon1.png",
+    // },
+    // {
+    //   id: 10,
+    //   title: "Income",
+    //   image: "Icon2.png",
+    //   img: "Icon1.png",
+    // },
+    // {
+    //   id: 11,
+    //   title: "Others",
+    //   image: "Icon2.png",
+    //   img: "Icon1.png",
+    // },
   ]);
   return (
-    <div className="w-1/4 flex flex-col gap-[24px] bg-white py-[24px] px-[16px] rounded-[12px] ">
+    <div className="w-1/5 flex flex-col gap-[24px] bg-white py-[24px] px-[16px] rounded-[12px] ">
       <h1 className="text-[24px] font-semibold">Records</h1>
       <button
         className="px-[12px] h-[32px] rounded-[20px] bg-blue-600 text-white"
@@ -124,27 +124,28 @@ export default function Records1() {
             );
           })}
         </div>
-        <button className="text-[16px] font-normal leading-[24px]">
+        <button
+          className="w-full h-[32px] rounded-[20px] text-white text-[16px] font-normal leading-[24px] bg-blue-600"
+          onClick={() => {
+            setIsCategory(true);
+          }}
+        >
           + Add Category
         </button>
       </div>
       <div className="flex flex-col gap-[16px]">
         <h2 className="text-[16px] font-semibold">Amount Rangess</h2>
         <div className="flex gap-[16px]">
-          <input
-            className="h-[48px] border-[2px] rounded-[15px]"
-            type="text"
-            placeholder="1"
-          ></input>
-          <input
-            className="h-[48px] border-[2px] rounded-[16px]"
+          <textarea className="w-full " type="text" placeholder="1"></textarea>
+          <textarea
+            className="pl-[30px]"
             type="text"
             placeholder="100"
-          ></input>
+          ></textarea>
         </div>
         <div className="flex">
           <input type="radio"></input>
-          <input type="range"></input>
+          <input className="w-full" type="range"></input>
           <input type="radio"></input>
         </div>
       </div>

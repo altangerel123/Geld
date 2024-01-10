@@ -10,7 +10,7 @@ export default function Home() {
   const [password, setPaswsword] = useState("");
   return (
     <div className="w-full h-screen flex bg-blue-600">
-      <div className="w-1/2 h-full bg-white flex justify-center items-center">
+      <div className="w-1/2 h-full bg-white flex justify-center items-center text-black">
         <div className="max-w-[384px] flex flex-col gap-[40px]">
           <div className="flex justify-center items-center gap-[9px">
             <img className="w-[23px] h-[23px]" src="Vector.png" />
@@ -23,11 +23,11 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-col gap-[16px]">
-            <input
+            {/* <input
               className="border-[2px] border-[#A3A3A3] rounded-[5px] p-[16px]"
               type="text"
               placeholder="Name"
-            />
+            /> */}
             <input
               className="border-[2px] border-[#A3A3A3] rounded-[5px] p-[16px]"
               type="email"
@@ -46,11 +46,11 @@ export default function Home() {
                 setPaswsword(e.target.value);
               }}
             />
-            <input
+            {/* <input
               className="border-[2px] border-[#A3A3A3] rounded-[5px] p-[16px]"
               type="password"
               placeholder="Re-assword"
-            />
+            /> */}
             <button
               className="text-white border-[1px] bg-blue-600 rounded-[5px] p-[10px]"
               onClick={() => {

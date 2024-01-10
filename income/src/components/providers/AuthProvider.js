@@ -67,6 +67,11 @@ export const AuthProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
+  const signOut = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    router.push("/");
+  };
 
   useEffect(() => {
     setIsReady(false);
@@ -81,7 +86,9 @@ export const AuthProvider = ({ children }) => {
   });
 
   return (
-    <AuthContext.Provider value={{ signUp, isLoading, login, isLoggedIn }}>
+    <AuthContext.Provider
+      value={{ signUp, isLoading, login, isLoggedIn, signOut }}
+    >
       {isReady && children}
       {!isReady && <Loading />}
     </AuthContext.Provider>

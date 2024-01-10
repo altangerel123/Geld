@@ -9,30 +9,25 @@ const { User } = require("../model/user.model");
 
 const app = express();
 connectDatabase();
-
 app.use(cors());
 app.use(bodyParser.json());
 
 app.post("/sign-up", async (req, res) => {
   const { email, password } = req.body;
-
-  const filePath = "src/data/users.json";
-
-  const usersRaw = await fs.readFile(filePath, "utf8");
-
-  const users = JSON.parse(usersRaw);
-
-  const user = users.find((user) => user.email === email);
-  if (user) {
+  const users = await User.findOne({ email: email });
+  if (users) {
     return res.status(409).json({
       message: "User already exists",
     });
   }
-  users.push({
+  await User.create({
+    name: "hello",
     email,
     password,
+    updatedAt: new Date(),
+    createdAt: new Date(),
   });
-  await fs.writeFile(filePath, JSON.stringify(users));
+
   const token = jwt.sign({ email }, "sss");
   res.json({
     message: "User created",
@@ -40,13 +35,11 @@ app.post("/sign-up", async (req, res) => {
   });
 });
 
-
 app.get("/users", async (_req, res) => {
   const users = await User.find({ name: "hello" });
 
   res.json(users);
 });
-
 
 app.get("/profile", async (req, res) => {
   const { authorization } = req.headers;
@@ -63,9 +56,9 @@ app.get("/profile", async (req, res) => {
     const usersRaw = await fs.readFile(filePath, "utf8");
 
     const users = JSON.parse(usersRaw);
-    const user1 = users.filter((user) => user.email === email);
+    const profile = users.filter((user) => user.email === email);
     res.json({
-      user1,
+      profile,
     });
   } catch (err) {
     console.lor(err);
@@ -75,37 +68,29 @@ app.get("/profile", async (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
-  await User.create({
-    name: "hello",
+  const filePath = "src/data/users.json";
+
+  const usersRaw = await fs.readFile(filePath, "utf8");
+
+  const users = JSON.parse(usersRaw);
+
+  const user = users.find((user) => user.email === email);
+
+  if (!user) {
+    return res.status(409).json({
+      message: "e-mail buruu bn",
+    });
+  }
+  if (user.password !== password) {
+    return res.status(409).json({
+      message: "pass buruu bn",
+    });
+  }
+  users.push({
     email,
     password,
-    updatedAt: new Date(),
-    createdAt: new Date(),
-  })
-
-  // const filePath = "src/data/users.json";
-
-  // const usersRaw = await fs.readFile(filePath, "utf8");
-
-  // const users = JSON.parse(usersRaw);
-
-  // const user = users.find((user) => user.email === email);
-
-  // if (!user) {
-  //   return res.status(409).json({
-  //     message: "e-mail buruu bn",
-  //   });
-  // }
-  // if (user.password !== password) {
-  //   return res.status(409).json({
-  //     message: "pass buruu bn",
-  //   });
-  // }
-  // users.push({
-  //   email,
-  //   password,
-  // });
-  // await fs.writeFile(filePath, JSON.stringify(users));
+  });
+  await fs.writeFile(filePath, JSON.stringify(users));
   res.json({
     message: "User created",
   });

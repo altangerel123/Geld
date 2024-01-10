@@ -14,7 +14,7 @@ export default function Records2() {
     },
   ]);
   return (
-    <div className="w-2/3">
+    <div className="w-full">
       <div className="flex justify-between mb-[24px]">
         <div className="flex gap-[4px] items-center text-white">
           <p className="w-[32px] h-[32px] bg-black flex justify-center items-center">

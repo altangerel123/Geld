@@ -10,8 +10,10 @@ import { useState } from "react";
 import { createContext } from "react";
 import Income from "../components/records/Income";
 import Add from "../components/records/Add";
+import { toast } from "react-toastify";
 
 export const ModalContext = createContext();
+
 export default function RootLayout({ children }) {
   const [isIncomeModalShown, setIsIncomeModalShown] = useState(false);
   const [isAddModalShown, setIsAddModalShown] = useState(false);
@@ -29,10 +31,11 @@ export default function RootLayout({ children }) {
           Authorization: token,
         },
       });
-      const { user1 } = data;
-      setProfile(user1[0]);
+      const { profile } = data;
+      setProfile(profile[0]);
     } catch (error) {
       // toast.error(error.message);
+      console.log(error);
     }
   };
 
@@ -55,6 +58,7 @@ export default function RootLayout({ children }) {
             setProfile,
             clickProfile,
             setClickProfile,
+            profile,
           }}
         >
           <AuthProvider>{children}</AuthProvider>
