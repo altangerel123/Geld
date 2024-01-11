@@ -37,29 +37,20 @@ app.post("/sign-up", async (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
-  const filePath = "src/data/users.json";
+  const user1 = await User.findOne({ email: email });
 
-  const usersRaw = await fs.readFile(filePath, "utf8");
-
-  const users = JSON.parse(usersRaw);
-
-  const user = users.find((user) => user.email === email);
-
-  if (!user) {
+  if (!user1) {
     return res.status(409).json({
       message: "e-mail buruu bn",
     });
   }
-  if (user.password !== password) {
+  const user2 = await User.findOne({ password: password });
+  if (!user2) {
     return res.status(409).json({
       message: "pass buruu bn",
     });
   }
-  users.push({
-    email,
-    password,
-  });
-  await fs.writeFile(filePath, JSON.stringify(users));
+
   res.json({
     message: "User created",
   });
@@ -91,7 +82,7 @@ app.get("/profile", async (req, res) => {
       profile,
     });
   } catch (err) {
-    console.lor(err);
+    console.log(err);
   }
 });
 

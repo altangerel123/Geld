@@ -11,6 +11,7 @@ import { createContext } from "react";
 import Income from "../components/records/Income";
 import Add from "../components/records/Add";
 import { toast } from "react-toastify";
+import { api } from "./common/axios";
 
 export const ModalContext = createContext();
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
       });
       const { profile } = data;
       setProfile(profile[0]);
+      console.log(profile[0]);
     } catch (error) {
       // toast.error(error.message);
       console.log(error);
