@@ -29,14 +29,13 @@ export default function RootLayout({ children }) {
       const token = localStorage.getItem("token");
       const { data } = await api.get("/profile", {
         headers: {
-          Authorization: token,
+          authorization: token,
         },
       });
       const { profile } = data;
       setProfile(profile[0]);
-      console.log(profile[0]);
     } catch (error) {
-      // toast.error(error.message);
+      toast.error(error.message);
       console.log(error);
     }
   };

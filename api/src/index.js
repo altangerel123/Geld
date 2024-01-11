@@ -72,12 +72,8 @@ app.get("/profile", async (req, res) => {
   try {
     const read = jwt.verify(authorization, "sss");
     const { email } = read;
-    const filePath = "src/data/users.json";
 
-    const usersRaw = await fs.readFile(filePath, "utf8");
-
-    const users = JSON.parse(usersRaw);
-    const profile = users.filter((user) => user.email === email);
+    const profile = User.filter((user) => user.email === email);
     res.json({
       profile,
     });
@@ -86,9 +82,9 @@ app.get("/profile", async (req, res) => {
   }
 });
 
-app.post("/records", async (req, res) => {
-  const { authorization } = req.headers;
-});
+// app.post("/records", async (req, res) => {
+//   const { authorization } = req.headers;
+// });
 
 const port = 3002;
 app.listen(port, () => {

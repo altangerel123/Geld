@@ -46,16 +46,16 @@ export default function Records2() {
         <h2 className="text-[16px] font-semibold leading-[24px] text-white">
           Today
         </h2>
-        {today.map((item) => {
-          return <Today {...item} />;
+        {today.map((item, index) => {
+          return <Today key={index} {...item} />;
         })}
       </div>
       <div className="flex flex-col  gap-[12px] mt-[24px]">
         <h2 className="text-[16px] font-semibold leading-[24px] text-white">
           Yesterday
         </h2>
-        {today.map((item) => {
-          return <Today {...item} />;
+        {today.map((item, index) => {
+          return <Today key={index} {...item} />;
         })}
       </div>
     </div>

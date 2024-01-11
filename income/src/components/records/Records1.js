@@ -112,9 +112,9 @@ export default function Records1() {
           <p className="text-[16px] font-semibold">Clear</p>
         </div>
         <div className="flex flex-col gap-[8px]">
-          {category.map((item) => {
+          {category.map((item, index) => {
             return (
-              <div className="flex justify-between">
+              <div key={index} className="flex justify-between">
                 <div className="flex leading-[24px] gap-[8px]">
                   <img className="w-[20px] h-[20px]" src={item.image} />
                   <p className="text-[16px] font-narmal">{item.title}</p>
