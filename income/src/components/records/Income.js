@@ -128,9 +128,10 @@ export default function Income() {
                     <img className="w-[24px] h-[24px]" src="PlusCircle.png" />
                     <p className="text-[16px] font-narmal">Add Category</p>
                   </div>
-                  {selects.map((item) => {
+                  {selects.map((item, index) => {
                     return (
                       <div
+                        key={index}
                         className="flex p-[16px] items-start gap-[12px]  bg-white"
                         onClick={() => {
                           setCategoryAdd(item);

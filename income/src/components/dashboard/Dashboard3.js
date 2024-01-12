@@ -16,9 +16,9 @@ export default function Dashboard3() {
       <h2 className="bg-white px-[24px] py-[16px] text-[16px] font-bold">
         Last Records
       </h2>
-      {card.map((item) => {
+      {card.map((item, index) => {
         return (
-          <div className="bg-white py-[20px]">
+          <div key={index} className="bg-white py-[20px]">
             <div className="flex px-[24px] gap-[16px]">
               <div>
                 <img

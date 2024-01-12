@@ -6,7 +6,7 @@ import styles from "../components/records/income.module.css";
 import { useAuth } from "./providers/AuthProvider";
 
 export default function Pro() {
-  const { clickProfile, setClickProfile, profile } = useContext(ModalContext);
+  const { clickProfile, setClickProfile, profiley } = useContext(ModalContext);
   const { signOut } = useAuth();
   return (
     <div
@@ -28,8 +28,8 @@ export default function Pro() {
             src="Pro.jpeg"
           ></img>
           <div className="text-black">
-            <div>Email:{profile && profile.email}</div>
-            <div>Password:{profile && profile.password}</div>
+            <div>Email:{profiley && profiley.email}</div>
+            <div>Password:{profiley && profiley.password}</div>
           </div>
         </div>
         <div className="w-full flex justify-center">

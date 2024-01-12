@@ -23,11 +23,6 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-col gap-[16px]">
-            {/* <input
-              className="border-[2px] border-[#A3A3A3] rounded-[5px] p-[16px]"
-              type="text"
-              placeholder="Name"
-            /> */}
             <input
               className="border-[2px] border-[#A3A3A3] rounded-[5px] p-[16px]"
               type="email"
@@ -46,11 +41,6 @@ export default function Home() {
                 setPaswsword(e.target.value);
               }}
             />
-            {/* <input
-              className="border-[2px] border-[#A3A3A3] rounded-[5px] p-[16px]"
-              type="password"
-              placeholder="Re-assword"
-            /> */}
             <button
               className="text-white border-[1px] bg-blue-600 rounded-[5px] p-[10px]"
               onClick={() => {

@@ -1,6 +1,7 @@
 "use client";
 import styles from "../../components/records/income.module.css";
 import { ModalContext } from "../../app/layout";
+import { useAuth } from "../providers/AuthProvider";
 import { useContext, useState } from "react";
 
 import { FaHouse, FaTractor } from "react-icons/fa6";
@@ -36,8 +37,18 @@ import { FaPencilAlt } from "react-icons/fa";
 import { handleClientScriptLoad } from "next/script";
 
 export default function Add() {
-  const { isCategory, setIsCategory, isIcon, setIsIcon } =
-    useContext(ModalContext);
+  const {
+    isCategory,
+    setIsCategory,
+    isIcon,
+    setIsIcon,
+    clickCategory,
+    category,
+    setCategory,
+    icon,
+    setIcon,
+    clickCategory1,
+  } = useContext(ModalContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const [color, setColor] = useState("");
@@ -117,7 +128,13 @@ export default function Add() {
                 <img className="w-[24px] h-[24px]" src="Icon3.png" />
               </div>
               <div className="flex border-[1px] p-[16px] bg-[#F9FAFB] rounded-[8px]">
-                <input type="text" placeholder="Name" />
+                <input
+                  type="text"
+                  placeholder="Name"
+                  onChange={(e) => {
+                    setCategory(e.target.value);
+                  }}
+                />
                 <img className="" src="Icon3.png" />
               </div>
               <div
@@ -125,13 +142,14 @@ export default function Add() {
                 style={{ display: isIcon ? "none" : "flex" }}
               >
                 <div className="grid grid-cols-6 bg-white">
-                  {Icon.map((icon, item) => {
+                  {Icon.map((icon, index) => {
                     return (
                       <div
                         className="p-[24px]"
-                        key={item.icon}
+                        key={index}
                         onClick={() => {
                           setIsOpen(icon);
+                          setIcon(icon);
                         }}
                       >
                         {icon}
@@ -147,7 +165,6 @@ export default function Add() {
                           style={{ backgroundColor: colors }}
                           onClick={() => {
                             setColor(colors);
-                            console.log(colors);
                           }}
                         ></div>
                       );
@@ -156,7 +173,12 @@ export default function Add() {
                 </div>
               </div>
             </div>
-            <p className="h-[40px] rounded-[20px] bg-[#16A34A] mt-[32px] flex justify-center items-center ">
+            <p
+              className="h-[40px] rounded-[20px] bg-[#16A34A] mt-[32px] flex justify-center items-center "
+              onClick={() => {
+                clickCategory(category, icon), clickCategory1(category, icon);
+              }}
+            >
               Add Category
             </p>
           </div>

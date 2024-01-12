@@ -3,76 +3,8 @@ import { useContext, useState } from "react";
 import { ModalContext } from "../../app/layout";
 
 export default function Records1() {
-  const { setIsCategory } = useContext(ModalContext);
+  const { setIsCategory, category1map } = useContext(ModalContext);
 
-  const [category] = useState([
-    {
-      id: 1,
-      title: "Food & Drinks",
-      image: "Icon2.png",
-      img: "Icon1.png",
-    },
-    // {
-    //   id: 2,
-    //   title: "Shopping",
-    //   image: "Icon2.png",
-    //   img: "Icon1.png",
-    // },
-    // {
-    //   id: 3,
-    //   title: "Housing",
-    //   image: "Icon2.png",
-    //   img: "Icon1.png",
-    // },
-    // {
-    //   id: 4,
-    //   title: "Transportation",
-    //   image: "Icon2.png",
-    //   img: "Icon1.png",
-    // },
-    // {
-    //   id: 5,
-    //   title: "Vehicle",
-    //   image: "Icon2.png",
-    //   img: "Icon1.png",
-    // },
-    // {
-    //   id: 6,
-    //   title: "Life & Entertainment",
-    //   image: "Icon2.png",
-    //   img: "Icon1.png",
-    // },
-    // {
-    //   id: 7,
-    //   title: "Communication, PC",
-    //   image: "Icon2.png",
-    //   img: "Icon1.png",
-    // },
-    // {
-    //   id: 8,
-    //   title: "Financial expenses",
-    //   image: "Icon2.png",
-    //   img: "Icon1.png",
-    // },
-    // {
-    //   id: 9,
-    //   title: "Investments",
-    //   image: "Icon2.png",
-    //   img: "Icon1.png",
-    // },
-    // {
-    //   id: 10,
-    //   title: "Income",
-    //   image: "Icon2.png",
-    //   img: "Icon1.png",
-    // },
-    // {
-    //   id: 11,
-    //   title: "Others",
-    //   image: "Icon2.png",
-    //   img: "Icon1.png",
-    // },
-  ]);
   return (
     <div className="w-1/5 flex flex-col gap-[24px] bg-white py-[24px] px-[16px] rounded-[12px] ">
       <h1 className="text-[24px] font-semibold">Records</h1>
@@ -111,19 +43,10 @@ export default function Records1() {
           <h3 className="text-[16px] font-semibold">Category</h3>
           <p className="text-[16px] font-semibold">Clear</p>
         </div>
-        <div className="flex flex-col gap-[8px]">
-          {category.map((item, index) => {
-            return (
-              <div key={index} className="flex justify-between">
-                <div className="flex leading-[24px] gap-[8px]">
-                  <img className="w-[20px] h-[20px]" src={item.image} />
-                  <p className="text-[16px] font-narmal">{item.title}</p>
-                </div>
-                <img className="w-[20px] h-[20px]" src={item.img} />
-              </div>
-            );
-          })}
-        </div>
+        <div className="flex flex-col gap-[8px]"></div>
+        {category1map.map((item, index) => {
+          return <div key={index}>{item.category}</div>;
+        })}
         <button
           className="w-full h-[32px] rounded-[20px] text-white text-[16px] font-normal leading-[24px] bg-blue-600"
           onClick={() => {

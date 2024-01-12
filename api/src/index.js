@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const { connectDatabase } = require("./database");
 const { User } = require("./model/user.model");
+const { Category } = require("./model/category.model");
 
 const app = express();
 connectDatabase();
@@ -37,22 +38,18 @@ app.post("/sign-up", async (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
-  const user1 = await User.findOne({ email: email });
+  const user = await User.findOne({ email: email, password: password });
 
-  if (!user1) {
+  if (!user) {
     return res.status(409).json({
       message: "e-mail buruu bn",
     });
   }
-  const user2 = await User.findOne({ password: password });
-  if (!user2) {
-    return res.status(409).json({
-      message: "pass buruu bn",
-    });
-  }
 
+  const token = jwt.sign({ email }, "sss");
   res.json({
-    message: "User created",
+    message: "User signed in",
+    token,
   });
 });
 
@@ -66,14 +63,14 @@ app.get("/profile", async (req, res) => {
   const { authorization } = req.headers;
   if (!authorization) {
     return res.status(409).json({
-      message: "aldaa",
+      message: "Aldaa",
     });
   }
   try {
-    const read = jwt.verify(authorization, "sss");
-    const { email } = read;
+    const payload = jwt.verify(authorization, "sss");
+    const { email } = payload;
 
-    const profile = User.filter((user) => user.email === email);
+    const profile = await User.find({ email: email });
     res.json({
       profile,
     });
@@ -82,9 +79,51 @@ app.get("/profile", async (req, res) => {
   }
 });
 
-// app.post("/records", async (req, res) => {
-//   const { authorization } = req.headers;
-// });
+app.post("/category", async (req, res) => {
+  const { authorization } = req.headers;
+  if (!authorization) {
+    return res.status(409).json({
+      message: "Aldaa",
+    });
+  }
+  try {
+    const { icon, category } = req.body;
+    const payload = jwt.verify(authorization, "sss");
+    const { email } = payload;
+
+    await Category.create({
+      useremail: email,
+      icon,
+      category,
+      updatedAt: new Date(),
+      createdAt: new Date(),
+    });
+    return res.json({
+      message: "New category created",
+    });
+  } catch (error) {
+    message: "Bvr tom aldaa";
+  }
+});
+app.get("/clickCategory1", async (req, res) => {
+  const { authorization } = req.headers;
+  if (!authorization) {
+    return res.status(409).json({
+      message: "Aldaa",
+    });
+  }
+  try {
+    const payload = jwt.verify(authorization, "sss");
+    const { email } = payload;
+
+    const category1 = await Category.find({ useremail: email });
+    res.json({
+      category1,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 const port = 3002;
 app.listen(port, () => {

@@ -13,9 +13,9 @@ export default function Dashboard2() {
   ]);
   return (
     <div className="w-full flex gap-[30px] px-[120px] py-[30px] ">
-      {card.map((item) => {
+      {card.map((item, index) => {
         return (
-          <div className="w-1/2 h-[284px] rounded-[12px] bg-white">
+          <div key={index} className="w-1/2 h-[284px] rounded-[12px] bg-white">
             <h2 className="px-[24px] py-[16px] tect-[16px] font-normal border-b-[1px] border-black">
               {item.title}
             </h2>

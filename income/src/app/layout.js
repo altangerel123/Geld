@@ -21,22 +21,58 @@ export default function RootLayout({ children }) {
   const [isCategory, setIsCategory] = useState(false);
   const [isIcon, setIsIcon] = useState(true);
   const [isPro, setIsPro] = useState(false);
-  const [profile, setProfile] = useState();
+  const [profiley, setProfiley] = useState("");
   const [clickProfile, setClickProfile] = useState(false);
+  const [category1map, setCategory1map] = useState("");
+  const [category, setCategory] = useState("");
+  const [icon, setIcon] = useState("");
 
   const Profile = async () => {
     try {
       const token = localStorage.getItem("token");
       const { data } = await api.get("/profile", {
         headers: {
-          authorization: token,
+          Authorization: token,
         },
       });
+
       const { profile } = data;
-      setProfile(profile[0]);
+      setProfiley(profile[0]);
     } catch (error) {
       toast.error(error.message);
-      console.log(error);
+    }
+  };
+  const clickCategory = async (icon, category) => {
+    try {
+      const token = localStorage.getItem("token");
+      const { data } = await api.post(
+        "/category",
+        {
+          icon,
+          category,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+  const clickCategory1 = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const { data } = await api.get("/clickCategory1", {
+        headers: {
+          Authorization: token,
+        },
+      });
+      console.log("data", data, typeof data);
+      setCategory1map(data);
+    } catch (error) {
+      toast.error(error.message);
     }
   };
 
@@ -45,6 +81,8 @@ export default function RootLayout({ children }) {
       <body>
         <ModalContext.Provider
           value={{
+            category1map,
+            setCategory1map,
             isPro,
             setIsPro,
             isIcon,
@@ -56,10 +94,15 @@ export default function RootLayout({ children }) {
             isAddModalShown,
             setIsAddModalShown,
             Profile,
-            setProfile,
             clickProfile,
             setClickProfile,
-            profile,
+            profiley,
+            clickCategory,
+            category,
+            setCategory,
+            icon,
+            setIcon,
+            clickCategory1,
           }}
         >
           <AuthProvider>{children}</AuthProvider>
