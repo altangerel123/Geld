@@ -1,7 +1,6 @@
 "use client";
 import styles from "../../components/records/income.module.css";
 import { ModalContext } from "../../app/layout";
-import { useAuth } from "../providers/AuthProvider";
 import { useContext, useState } from "react";
 
 import { FaHouse, FaTractor } from "react-icons/fa6";
@@ -53,39 +52,37 @@ export default function Add() {
   const [isOpen, setIsOpen] = useState(false);
   const [color, setColor] = useState("");
   const style = { color: color };
-  const Icon = [
-    <FaHouse {...style} />,
-    <PiHouseLineFill {...{ style }} />,
-    <PiIdentificationBadgeFill {...style} />,
-    <PiIdentificationCardFill {...style} />,
-    <PiLadderBold {...style} />,
-    <BsIntersect {...style} />,
-    <FaRegImage {...style} />,
-    <FaMagnifyingGlassPlus {...style} />,
-    <FaMicrophone {...style} />,
-    <SiMicrosoftexcel {...style} />,
-
-    <PiNotepadFill {...style} />,
-    <MdOutlinePlaylistPlay {...style} />,
-    <RiLeafFill {...style} />,
-    <PiNumberFiveFill {...style} />,
-    <PiNumberSevenFill {...style} />,
-    <PiRoadHorizonFill {...style} />,
-    <PiHourglassSimpleMediumFill {...style} />,
-    <RiAnchorLine {...style} />,
-    <PiBezierCurveFill {...style} />,
-    <PiExcludeFill {...style} />,
-
-    <MdVignette {...style} />,
-    <FaBaseballBall {...style} />,
-    <FaQuestionCircle {...style} />,
-    <PiExamFill {...style} />,
-    <PiWatchFill {...style} />,
-    <PiGlobeFill {...style} />,
-    <PiOrangeSliceFill {...style} />,
-    <PiPeaceFill {...style} />,
-    <PiToiletPaperFill {...style} />,
-    <FaPencilAlt {...style} />,
+  const icon = [
+    {<FaHouse/>},
+    { icon: <PiHouseLineFill {...style} />, id: 1 },
+    { icon: <PiIdentificationBadgeFill {...style} />, id: 2 },
+    { icon: <PiIdentificationCardFill {...style} />, id: 3 },
+    { icon: <PiLadderBold {...style} />, id: 4 },
+    { icon: <BsIntersect {...style} />, id: 5 },
+    { icon: <FaRegImage {...style} />, id: 6 },
+    { icon: <FaMagnifyingGlassPlus {...style} />, id: 7 },
+    { icon: <FaMicrophone {...style} />, id: 8 },
+    { icon: <SiMicrosoftexcel {...style} />, id: 9 },
+    { icon: <PiNotepadFill {...style} />, id: 10 },
+    { icon: <MdOutlinePlaylistPlay {...style} />, id: 11 },
+    { icon: <RiLeafFill {...style} />, id: 12 },
+    { icon: <PiNumberFiveFill {...style} />, id: 13 },
+    { icon: <PiNumberSevenFill {...style} />, id: 14 },
+    { icon: <PiRoadHorizonFill {...style} />, id: 15 },
+    { icon: <PiHourglassSimpleMediumFill {...style} />, id: 16 },
+    { icon: <RiAnchorLine {...style} />, id: 17 },
+    { icon: <PiBezierCurveFill {...style} />, id: 18 },
+    { icon: <PiExcludeFill {...style} />, id: 19 },
+    { icon: <MdVignette {...style} />, id: 20 },
+    { icon: <FaBaseballBall {...style} />, id: 21 },
+    { icon: <FaQuestionCircle {...style} />, id: 22 },
+    { icon: <PiExamFill {...style} />, id: 23 },
+    { icon: <PiWatchFill {...style} />, id: 24 },
+    { icon: <PiGlobeFill {...style} />, id: 25 },
+    { icon: <PiOrangeSliceFill {...style} />, id: 26 },
+    { icon: <PiPeaceFill {...style} />, id: 27 },
+    { icon: <PiToiletPaperFill {...style} />, id: 28 },
+    { icon: <FaPencilAlt {...style} />, id: 29 },
   ];
   const Color = [
     "#0166FF",
@@ -142,17 +139,17 @@ export default function Add() {
                 style={{ display: isIcon ? "none" : "flex" }}
               >
                 <div className="grid grid-cols-6 bg-white">
-                  {Icon.map((icon, index) => {
+                  {Icon.map((icons, index) => {
                     return (
                       <div
                         className="p-[24px]"
                         key={index}
                         onClick={() => {
-                          setIsOpen(icon);
-                          setIcon(icon);
+                          setIsOpen(icons);
+                          setIcon(icons.icon.type.name);
                         }}
                       >
-                        {icon}
+                        {icons}
                       </div>
                     );
                   })}
@@ -177,7 +174,6 @@ export default function Add() {
               className="h-[40px] rounded-[20px] bg-[#16A34A] mt-[32px] flex justify-center items-center "
               onClick={() => {
                 clickCategory(icon, category), clickCategory1(category, icon);
-                setIsCategory(false);
               }}
             >
               Add Category

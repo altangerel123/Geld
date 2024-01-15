@@ -17,11 +17,11 @@ export default function Records2() {
     <div className="w-full">
       <div className="flex justify-between mb-[24px]">
         <div className="flex gap-[4px] items-center text-white">
-          <p className="w-[32px] h-[32px] bg-black flex justify-center items-center">
+          <p className="w-[32px] h-[32px] bg-slate-300 flex justify-center items-center">
             {"<"}
           </p>
           <p className="text-white">Last 30 Days</p>
-          <p className="w-[32px] h-[32px] bg-black flex justify-center items-center">
+          <p className="w-[32px] h-[32px] bg-slate-300 flex justify-center items-center">
             {">"}
           </p>
         </div>

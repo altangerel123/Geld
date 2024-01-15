@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const { connectDatabase } = require("./database");
 const { User } = require("./model/user.model");
 const { Category } = require("./model/category.model");
+const { Records } = require("./model/records.modul");
 
 const app = express();
 connectDatabase();
@@ -83,7 +84,7 @@ app.post("/category", async (req, res) => {
   const { authorization } = req.headers;
   if (!authorization) {
     return res.status(409).json({
-      message: "Aldaa",
+      message: "Unauthorized",
     });
   }
   try {
@@ -117,11 +118,40 @@ app.get("/clickCategory1", async (req, res) => {
     const payload = jwt.verify(authorization, "sss");
     const { email } = payload;
 
-    const category1 = await Category.find({});
+    // const records = JSON.parse(recordsRaw);
+
+    const category1 = await Category.find({ useremail: email });
     // return res.json(typeof category1);
     return res.json(category1);
   } catch (error) {
     console.log(error);
+  }
+});
+app.post("/records", async (req, res) => {
+  const { authorization } = req.headers;
+  if (!authorization) {
+    return res.status(409).json({
+      message: "Unauthorized",
+    });
+  }
+  try {
+    const { type, addCategory, amount, dated } = req.body;
+    const payload = jwt.verify(authorization, "sss");
+    const { email } = payload;
+    await Records.push({
+      useremail: email,
+      type,
+      addCategory,
+      amount,
+      dated,
+      updatedAt: new Date(),
+      createdAt: new Date(),
+    });
+    return res.json({
+      message: "New records created",
+    });
+  } catch (error) {
+    message: "New records created";
   }
 });
 

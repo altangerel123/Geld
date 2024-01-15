@@ -23,10 +23,16 @@ export default function RootLayout({ children }) {
   const [isPro, setIsPro] = useState(false);
   const [profiley, setProfiley] = useState("");
   const [clickProfile, setClickProfile] = useState(false);
+
   const [category1map, setCategory1map] = useState([]);
   const [category, setCategory] = useState("");
   const [icon, setIcon] = useState("");
   const [isReady, setIsReady] = useState(false);
+
+  const [type, setType] = useState("");
+  const [addCategory, setAddCategory] = useState("");
+  const [amount, setAmount] = useState("");
+  const [dated, setDated] = useState("");
 
   const Profile = async () => {
     try {
@@ -79,6 +85,27 @@ export default function RootLayout({ children }) {
       toast.error(error.message);
     }
   };
+  const records = async (type, addCategory, amount, dated) => {
+    try {
+      const token = localStorage.getItem("token");
+      const { data } = await api.post(
+        "/records",
+        {
+          type,
+          addCategory,
+          amount,
+          dated,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <html lang="en">
@@ -108,6 +135,15 @@ export default function RootLayout({ children }) {
             icon,
             setIcon,
             clickCategory1,
+            records,
+            type,
+            setType,
+            addCategory,
+            setAddCategory,
+            amount,
+            setAmount,
+            dated,
+            setDated,
           }}
         >
           <AuthProvider>{children}</AuthProvider>

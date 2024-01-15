@@ -46,7 +46,15 @@ export default function Records1() {
         <div className="flex flex-col gap-[8px]"></div>
         {isReady &&
           category1map.map((item, index) => {
-            return <div key={index}>{item.category}</div>;
+            return (
+              <div key={index} className="flex border-[1px] justify-between">
+                <div className="flex gap-[5px]">
+                  <img src=" Icon2.png"></img>
+                  <div>{item.category}</div>
+                </div>
+                <img src="Icon1.png"></img>
+              </div>
+            );
           })}
         <button
           className="w-full h-[32px] rounded-[20px] text-white text-[16px] font-normal leading-[24px] bg-blue-600"

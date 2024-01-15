@@ -11,8 +11,20 @@ export default function Income() {
     setIsIncomeModalShown,
     setIsAddModalShown,
     isAddModalShown,
+    icon,
+
+    records,
+    type,
+    setType,
+    addCategory,
+    setAddCategory,
+    amount,
+    setAmount,
+    dated,
+    setDated,
+    isReady,
+    category1map,
   } = useContext(ModalContext);
-  const [categoryAdd, setCategoryAdd] = useState(false);
 
   const [expense, setExpense] = useState("#0166FF");
   const [income, setIncome] = useState("blue");
@@ -20,38 +32,7 @@ export default function Income() {
     setExpense(!expense);
     setIncome(!income);
   };
-  const [selects] = useState([
-    {
-      id: 2,
-      title: "Home",
-      image: "select.png",
-    },
-    {
-      id: 3,
-      title: "Gift",
-      image: "select2.png",
-    },
-    {
-      id: 4,
-      title: "Food",
-      image: "select3.png",
-    },
-    {
-      id: 5,
-      title: "Drink",
-      image: "select4.png",
-    },
-    {
-      id: 6,
-      title: "Taxi",
-      image: "select5.png",
-    },
-    {
-      id: 7,
-      title: "Shopping",
-      image: "select6.png",
-    },
-  ]);
+
   return (
     <div
       className={styles.container}
@@ -86,6 +67,9 @@ export default function Income() {
                   backgroundColor: expense ? "#0166FF" : "white",
                   color: expense ? "white" : "black",
                 }}
+                onChange={(e) => {
+                  setType(e.target.value);
+                }}
               >
                 Expense
               </button>
@@ -96,28 +80,34 @@ export default function Income() {
                   backgroundColor: expense ? "white" : "#16A34A",
                   color: expense ? "black" : "white",
                 }}
+                onChange={(e) => {
+                  setType(e.target.value);
+                }}
               >
                 Income
               </button>
             </div>
             <div className="p-[16px] h-[] rounded-[8px] mb-[20px] bg-[#F3F4F6]">
               <p className="text-[16px] font-normal leading-[24px]">Amount</p>
-              <p className="">$000.00</p>
+              <input
+                placeholder="$ 000.00"
+                onChange={(e) => {
+                  setAmount(e.target.value);
+                }}
+              ></input>
             </div>
             <div className="relative">
               <h2 className="text-[16px] font-normal leading-[24px]">
                 Category
               </h2>
               <div
-                className="w-full border-[1px] p-[10px] mb-[10px]"
+                className="w-full h-[30px] border-[1px]"
                 onClick={() => {
-                  setIsAddModalShown(true);
+                  setIsAddModalShown(!isAddModalShown);
                 }}
-              >
-                {categoryAdd}
-              </div>
+              ></div>
               <div style={{ display: isAddModalShown ? "flex" : "none" }}>
-                <div className="w-full absolute top-[70px] left-0">
+                <div className="w-full absolute top-[60px] left-0 bg-white">
                   <div
                     className="flex w-full p-[16px] items-start gap-[12px] border-b-[1px] bg-white"
                     onClick={() => {
@@ -128,20 +118,21 @@ export default function Income() {
                     <img className="w-[24px] h-[24px]" src="PlusCircle.png" />
                     <p className="text-[16px] font-narmal">Add Category</p>
                   </div>
-                  {selects.map((item, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className="flex p-[16px] items-start gap-[12px]  bg-white"
-                        onClick={() => {
-                          setCategoryAdd(item);
-                        }}
-                      >
-                        <img className="w-[24px] h-[24px]" src={item.image} />
-                        <p className="text-[16px] font-narmal">{item.title}</p>
-                      </div>
-                    );
-                  })}
+                  {isReady &&
+                    category1map.map((item, index) => {
+                      return (
+                        <div
+                          className="p-[16px] gap-[12px]"
+                          key={index}
+                          onChange={(e) => {
+                            setAddCategory(e.target.value);
+                          }}
+                        >
+                          {item.icon}
+                          {item.category}
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
             </div>
@@ -151,6 +142,9 @@ export default function Income() {
                 <input
                   className="rounded-[8px] border-[1px] p-[10px] h-[48px] flex bg-[#F3F4F6]"
                   type="date"
+                  onChange={() => {
+                    setDated;
+                  }}
                 ></input>
               </div>
               <div>
@@ -166,6 +160,10 @@ export default function Income() {
               style={{
                 backgroundColor: expense ? "#0166FF" : "#16A34A",
                 color: expense ? "white" : "white",
+              }}
+              onClick={() => {
+                records(type, addCategory, amount, dated);
+                setIsIncomeModalShown(false);
               }}
             >
               Add Record
