@@ -105,6 +105,7 @@ app.post("/category", async (req, res) => {
     message: "Bvr tom aldaa";
   }
 });
+
 app.get("/clickCategory1", async (req, res) => {
   const { authorization } = req.headers;
   if (!authorization) {
@@ -116,10 +117,9 @@ app.get("/clickCategory1", async (req, res) => {
     const payload = jwt.verify(authorization, "sss");
     const { email } = payload;
 
-    const category1 = await Category.find({ useremail: email });
-    res.json({
-      category1,
-    });
+    const category1 = await Category.find({});
+    // return res.json(typeof category1);
+    return res.json(category1);
   } catch (error) {
     console.log(error);
   }

@@ -176,7 +176,8 @@ export default function Add() {
             <p
               className="h-[40px] rounded-[20px] bg-[#16A34A] mt-[32px] flex justify-center items-center "
               onClick={() => {
-                clickCategory(category, icon), clickCategory1(category, icon);
+                clickCategory(icon, category), clickCategory1(category, icon);
+                setIsCategory(false);
               }}
             >
               Add Category

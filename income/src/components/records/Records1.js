@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { ModalContext } from "../../app/layout";
 
 export default function Records1() {
-  const { setIsCategory, category1map } = useContext(ModalContext);
+  const { setIsCategory, category1map, isReady } = useContext(ModalContext);
 
   return (
     <div className="w-1/5 flex flex-col gap-[24px] bg-white py-[24px] px-[16px] rounded-[12px] ">
@@ -44,9 +44,10 @@ export default function Records1() {
           <p className="text-[16px] font-semibold">Clear</p>
         </div>
         <div className="flex flex-col gap-[8px]"></div>
-        {category1map.map((item, index) => {
-          return <div key={index}>{item.category}</div>;
-        })}
+        {isReady &&
+          category1map.map((item, index) => {
+            return <div key={index}>{item.category}</div>;
+          })}
         <button
           className="w-full h-[32px] rounded-[20px] text-white text-[16px] font-normal leading-[24px] bg-blue-600"
           onClick={() => {

@@ -23,9 +23,10 @@ export default function RootLayout({ children }) {
   const [isPro, setIsPro] = useState(false);
   const [profiley, setProfiley] = useState("");
   const [clickProfile, setClickProfile] = useState(false);
-  const [category1map, setCategory1map] = useState("");
+  const [category1map, setCategory1map] = useState([]);
   const [category, setCategory] = useState("");
   const [icon, setIcon] = useState("");
+  const [isReady, setIsReady] = useState(false);
 
   const Profile = async () => {
     try {
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
     }
   };
   const clickCategory1 = async () => {
+    setIsReady(false);
     try {
       const token = localStorage.getItem("token");
       const { data } = await api.get("/clickCategory1", {
@@ -70,7 +72,9 @@ export default function RootLayout({ children }) {
         },
       });
       console.log("data", data, typeof data);
+
       setCategory1map(data);
+      setIsReady(true);
     } catch (error) {
       toast.error(error.message);
     }
@@ -96,6 +100,7 @@ export default function RootLayout({ children }) {
             Profile,
             clickProfile,
             setClickProfile,
+            isReady,
             profiley,
             clickCategory,
             category,
