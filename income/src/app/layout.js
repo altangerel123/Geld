@@ -29,10 +29,12 @@ export default function RootLayout({ children }) {
   const [icon, setIcon] = useState("");
   const [isReady, setIsReady] = useState(false);
 
-  const [type, setType] = useState("");
+  const [expense, setExpense] = useState(true);
   const [addCategory, setAddCategory] = useState("");
   const [amount, setAmount] = useState("");
   const [dated, setDated] = useState("");
+
+  const [newRecords, setNewRecords] = useState([]);
 
   const Profile = async () => {
     try {
@@ -106,6 +108,22 @@ export default function RootLayout({ children }) {
       toast.error(error.message);
     }
   };
+  const recordsGet = async () => {
+    setIsReady(false);
+    try {
+      const token = localStorage.getItem("token");
+      const { data } = await api.get("/recordsGet", {
+        headers: {
+          Authorization: token,
+        },
+      });
+      console.log("data", data, typeof data);
+      setNewRecords(data);
+      setIsReady(true);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <html lang="en">
@@ -136,14 +154,16 @@ export default function RootLayout({ children }) {
             setIcon,
             clickCategory1,
             records,
-            type,
-            setType,
+            recordsGet,
             addCategory,
             setAddCategory,
             amount,
             setAmount,
             dated,
             setDated,
+            expense,
+            setExpense,
+            newRecords,
           }}
         >
           <AuthProvider>{children}</AuthProvider>

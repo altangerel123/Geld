@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Records = mongoose.model("Records", {
   useremail: String,
-  type: String,
+  expense: Boolean,
   addCategory: String,
   amount: String,
   dated: String,

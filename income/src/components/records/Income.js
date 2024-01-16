@@ -11,11 +11,8 @@ export default function Income() {
     setIsIncomeModalShown,
     setIsAddModalShown,
     isAddModalShown,
-    icon,
-
     records,
-    type,
-    setType,
+    recordsGet,
     addCategory,
     setAddCategory,
     amount,
@@ -24,14 +21,9 @@ export default function Income() {
     setDated,
     isReady,
     category1map,
+    expense,
+    setExpense,
   } = useContext(ModalContext);
-
-  const [expense, setExpense] = useState("#0166FF");
-  const [income, setIncome] = useState("blue");
-  const Clicker = () => {
-    setExpense(!expense);
-    setIncome(!income);
-  };
 
   return (
     <div
@@ -62,26 +54,24 @@ export default function Income() {
             <div className="flex border-[1px] rounded-[20px] mb-[20px] bg-[#F3F4F6]">
               <button
                 className="w-1/2 px-[12px] h-[40px] border-[1px] rounded-[20px]"
-                onClick={Clicker}
+                onClick={() => {
+                  setExpense(true);
+                }}
                 style={{
                   backgroundColor: expense ? "#0166FF" : "white",
                   color: expense ? "white" : "black",
-                }}
-                onChange={(e) => {
-                  setType(e.target.value);
                 }}
               >
                 Expense
               </button>
               <button
                 className="w-1/2 px-[12px] h-[40px] border-[1px] rounded-[20px]"
-                onClick={Clicker}
+                onClick={() => {
+                  setExpense(false);
+                }}
                 style={{
                   backgroundColor: expense ? "white" : "#16A34A",
                   color: expense ? "black" : "white",
-                }}
-                onChange={(e) => {
-                  setType(e.target.value);
                 }}
               >
                 Income
@@ -128,7 +118,7 @@ export default function Income() {
                             setAddCategory(e.target.value);
                           }}
                         >
-                          {item.icon}
+                          {/* {item.icon} */}
                           {item.category}
                         </div>
                       );
@@ -162,7 +152,8 @@ export default function Income() {
                 color: expense ? "white" : "white",
               }}
               onClick={() => {
-                records(type, addCategory, amount, dated);
+                records(addCategory, amount, dated);
+                recordsGet(addCategory, amount, dated);
                 setIsIncomeModalShown(false);
               }}
             >
