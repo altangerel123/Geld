@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "../components/providers/AuthProvider";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createContext } from "react";
 import Income from "../components/records/Income";
 import Add from "../components/records/Add";
@@ -35,6 +35,7 @@ export default function RootLayout({ children }) {
   const [dated, setDated] = useState("");
 
   const [newRecords, setNewRecords] = useState([]);
+  const [addRecord, setaddRecord] = useState("");
 
   const Profile = async () => {
     try {
@@ -87,13 +88,12 @@ export default function RootLayout({ children }) {
       toast.error(error.message);
     }
   };
-  const records = async (type, addCategory, amount, dated) => {
+  const records = async (addCategory, amount, dated) => {
     try {
       const token = localStorage.getItem("token");
       const { data } = await api.post(
         "/records",
         {
-          type,
           addCategory,
           amount,
           dated,
@@ -108,6 +108,7 @@ export default function RootLayout({ children }) {
       toast.error(error.message);
     }
   };
+
   const recordsGet = async () => {
     setIsReady(false);
     try {
@@ -117,14 +118,17 @@ export default function RootLayout({ children }) {
           Authorization: token,
         },
       });
-      console.log("data", data, typeof data);
+      console.log("records", data, typeof data);
       setNewRecords(data);
       setIsReady(true);
     } catch (error) {
       toast.error(error.message);
     }
   };
-
+  useEffect(() => {
+    clickCategory1();
+    recordsGet();
+  }, [setCategory1map]);
   return (
     <html lang="en">
       <body>
@@ -164,6 +168,8 @@ export default function RootLayout({ children }) {
             expense,
             setExpense,
             newRecords,
+            addRecord,
+            setaddRecord,
           }}
         >
           <AuthProvider>{children}</AuthProvider>

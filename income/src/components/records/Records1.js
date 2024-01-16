@@ -43,19 +43,18 @@ export default function Records1() {
           <h3 className="text-[16px] font-semibold">Category</h3>
           <p className="text-[16px] font-semibold">Clear</p>
         </div>
-        <div className="flex flex-col gap-[8px]"></div>
-        {isReady &&
-          category1map.map((item, index) => {
-            return (
-              <div key={index} className="flex border-[1px] justify-between">
-                <div className="flex gap-[5px]">
-                  <img src=" Icon2.png"></img>
-                  <div>{item.category}</div>
-                </div>
-                <img src="Icon1.png"></img>
+        <div className="flex flex-col gap-[8px] gap-[5px]"></div>
+        {category1map.map((item, index) => {
+          return (
+            <div key={index} className="flex justify-between">
+              <div className="flex gap-[5px]">
+                <img src=" Icon2.png"></img>
+                <div>{item.category}</div>
               </div>
-            );
-          })}
+              <img src="Icon1.png"></img>
+            </div>
+          );
+        })}
         <button
           className="w-full h-[32px] rounded-[20px] text-white text-[16px] font-normal leading-[24px] bg-blue-600"
           onClick={() => {

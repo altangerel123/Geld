@@ -1,7 +1,7 @@
 "use client";
 
 import { ModalContext } from "../../app/layout";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styles from "../../components/records/income.module.css";
 
 export default function Income() {
@@ -23,6 +23,8 @@ export default function Income() {
     category1map,
     expense,
     setExpense,
+    addRecord,
+    setaddRecord,
   } = useContext(ModalContext);
 
   return (
@@ -91,11 +93,13 @@ export default function Income() {
                 Category
               </h2>
               <div
-                className="w-full h-[30px] border-[1px]"
+                className="w-full h-[30px] border-[1px] px-[15px]"
                 onClick={() => {
                   setIsAddModalShown(!isAddModalShown);
                 }}
-              ></div>
+              >
+                {addRecord}
+              </div>
               <div style={{ display: isAddModalShown ? "flex" : "none" }}>
                 <div className="w-full absolute top-[60px] left-0 bg-white">
                   <div
@@ -117,8 +121,11 @@ export default function Income() {
                           onChange={(e) => {
                             setAddCategory(e.target.value);
                           }}
+                          onClick={() => {
+                            setaddRecord(item.category);
+                            setIsAddModalShown(!isAddModalShown);
+                          }}
                         >
-                          {/* {item.icon} */}
                           {item.category}
                         </div>
                       );
@@ -132,8 +139,8 @@ export default function Income() {
                 <input
                   className="rounded-[8px] border-[1px] p-[10px] h-[48px] flex bg-[#F3F4F6]"
                   type="date"
-                  onChange={() => {
-                    setDated;
+                  onChange={(e) => {
+                    setDated(e.target.value);
                   }}
                 ></input>
               </div>

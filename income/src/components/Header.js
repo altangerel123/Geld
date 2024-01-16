@@ -29,7 +29,7 @@ export default function Header() {
               setFontWeight1(!fontWeight1);
             }}
             style={{
-              fontWeight: fontWeight1 ? "700" : "",
+              fontWeight: fontWeight1 ? "500" : "",
               fontSize: fontWeight1 ? "20px" : "",
             }}
           >
@@ -42,7 +42,7 @@ export default function Header() {
               setFontWeight1(!fontWeight1);
             }}
             style={{
-              fontWeight: fontWeight1 ? "" : "700",
+              fontWeight: fontWeight1 ? "" : "500",
               fontSize: fontWeight1 ? "" : "20px",
             }}
           >

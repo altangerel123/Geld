@@ -140,7 +140,6 @@ app.post("/records", async (req, res) => {
     const { email } = payload;
     await Records.create({
       useremail: email,
-      type,
       addCategory,
       amount,
       dated,
