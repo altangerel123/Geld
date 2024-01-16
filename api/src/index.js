@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const { connectDatabase } = require("./database");
 const { User } = require("./model/user.model");
 const { Category } = require("./model/category.model");
-const { Records } = require("./model/records.model");
+const { Records, Records3 } = require("./model/records.model");
 
 const app = express();
 connectDatabase();
@@ -135,7 +135,7 @@ app.post("/records", async (req, res) => {
     });
   }
   try {
-    const { type, addCategory, amount, dated } = req.body;
+    const {addCategory, amount, dated } = req.body;
     const payload = jwt.verify(authorization, "sss");
     const { email } = payload;
     await Records.create({
@@ -165,7 +165,7 @@ app.get("/recordsGet", async (req, res) => {
     const payload = jwt.verify(authorization, "sss");
     const { email } = payload;
 
-    const records3 = await Records3.find({ useremail: email });
+    const records3 = await Records.find({ useremail: email });
     return res.json(records3);
   } catch (error) {
     console.log(error);

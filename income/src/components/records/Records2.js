@@ -51,14 +51,14 @@ export default function Records2() {
                   <img className="w-[40px] h-[40px] p-[5px] bg-[#FF4545] rounded-full" />
                   <div className="flex flex-col">
                     <p className="text-[16px] font-narmal">
-                      {item.addCategory}
+                      {item.addCategorys}
                     </p>
                     <p className="">{item.dated}</p>
                   </div>
                 </div>
                 <p className="text-[16px] font-normal leading-[24px] text-[#EAB308] flex items-center">
                   {item.amount}
-                  {item.dated}
+                 
                 </p>
               </div>
             );
