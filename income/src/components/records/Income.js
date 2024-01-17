@@ -3,6 +3,7 @@
 import { ModalContext } from "../../app/layout";
 import { useContext } from "react";
 import styles from "../../components/records/income.module.css";
+import * as icons from "../icons";
 
 export default function Income() {
   const {
@@ -23,8 +24,8 @@ export default function Income() {
     category1map,
     expense,
     setExpense,
-    addRecord,
-    setaddRecord,
+    setIsopen,
+    icon,
   } = useContext(ModalContext);
 
   return (
@@ -82,6 +83,7 @@ export default function Income() {
             <div className="p-[16px] h-[] rounded-[8px] mb-[20px] bg-[#F3F4F6]">
               <p className="text-[16px] font-normal leading-[24px]">Amount</p>
               <input
+                type="number"
                 placeholder="$ 000.00"
                 onChange={(e) => {
                   setAmount(e.target.value);
@@ -98,7 +100,7 @@ export default function Income() {
                   setIsAddModalShown(!isAddModalShown);
                 }}
               >
-                {addRecord}
+                {addCategory}
               </div>
               <div style={{ display: isAddModalShown ? "flex" : "none" }}>
                 <div className="w-full absolute top-[60px] left-0 bg-white">
@@ -114,18 +116,19 @@ export default function Income() {
                   </div>
                   {isReady &&
                     category1map.map((item, index) => {
+                      const Icon = icons[item.icon];
+
                       return (
                         <div
                           className="p-[16px] gap-[12px]"
                           key={index}
-                          onChange={(e) => {
-                            setAddCategory(e.target.value);
-                          }}
                           onClick={() => {
-                            setaddRecord(item.category);
+                            setAddCategory(item.category);
                             setIsAddModalShown(!isAddModalShown);
+                            setIsopen(item.icon);
                           }}
                         >
+                          <Icon />
                           {item.category}
                         </div>
                       );

@@ -1,41 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ModalContext } from "../../app/layout";
 
 export default function Dashboard3() {
-  const [card, setCard] = useState([
-    {
-      id: 1,
-      title: "Lending & Renting",
-      description: "3 hours ago",
-      image: "House (1).png",
-    },
-  ]);
+  const { newRecords, isReady } = useContext(ModalContext);
   return (
-    <div className="px-[120px]">
-      <h2 className="bg-white px-[24px] py-[16px] text-[16px] font-bold">
+    <div className="bg-white mx-[120px] rounded-[18px]">
+      <h2 className="px-[24px] py-[16px] text-[16px] font-bold border-b-[1px]">
         Last Records
       </h2>
-      {card.map((item, index) => {
-        return (
-          <div key={index} className="bg-white py-[20px]">
-            <div className="flex px-[24px] gap-[16px]">
-              <div>
-                <img
-                  className="w-[40px] h-[40px] p-[10px] bg-blue-700 rounded-full"
-                  src={item.image}
-                />
+      {isReady &&
+        newRecords.map((item, index) => {
+          return (
+            <div
+              key={index}
+              className="flex px-[24px] py-[12px] justify-between"
+            >
+              <div className="flex leading-[24px] gap-[16px] items-center">
+                <img className="w-[40px] h-[40px] p-[5px] bg-[#FF4545] rounded-full" />
+                <div className="flex flex-col">
+                  <p className="text-[16px] font-narmal">{item.addCategorys}</p>
+                  <p className="">{item.dated}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-[16px] font-normal">{item.title}</h3>
-                <p className="text-[#6B7280] text-[12px] font-normal">
-                  {item.description}
-                </p>
-              </div>
+              <p className="text-[16px] font-normal leading-[24px] text-[#EAB308] flex items-center">
+                {item.amount}$
+              </p>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
     </div>
   );
 }

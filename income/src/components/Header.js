@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="h-[80px] flex py-[16px] px-[120px] justify-between border-[1px] mb-[40px] bg-white text-black relative">
+      <div className="h-[80px] flex py-[16px] px-[120px] justify-between border-[1px]  bg-white text-black relative">
         <div className="flex gap-[24px] justify-center items-center">
           <img className="" src="Vector.png" />
           <h2

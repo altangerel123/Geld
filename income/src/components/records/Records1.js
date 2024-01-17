@@ -3,10 +3,10 @@ import { useContext } from "react";
 import { ModalContext } from "../../app/layout";
 
 export default function Records1() {
-  const { setIsCategory, category1map, isReady } = useContext(ModalContext);
+  const { setIsCategory, category1map } = useContext(ModalContext);
 
   return (
-    <div className="w-1/5 flex flex-col gap-[24px] bg-white py-[24px] px-[16px] rounded-[12px] ">
+    <div className="w-1/5 flex flex-col gap-[24px] bg-white py-[24px] px-[16px] rounded-[12px] max-h-fit">
       <h1 className="text-[24px] font-semibold">Records</h1>
       <button
         className="px-[12px] h-[32px] rounded-[20px] bg-blue-600 text-white"
@@ -43,20 +43,19 @@ export default function Records1() {
           <h3 className="text-[16px] font-semibold">Category</h3>
           <p className="text-[16px] font-semibold">Clear</p>
         </div>
-        <div className="flex flex-col gap-[8px] gap-[5px]">
-        {category1map.map((item, index) => {
-          return (
-            <div key={index} className="flex justify-between">
-              <div className="flex gap-[5px]">
-                <img src=" Icon2.png"></img>
-                <div>{item.category}</div>
+        <div className="flex flex-col pb-[15px]">
+          {category1map.map((item, index) => {
+            return (
+              <div key={index} className="flex justify-between">
+                <div className="flex gap-[5px]">
+                  <img src=" Icon2.png"></img>
+                  <div>{item.category}</div>
+                </div>
+                <img src="Icon1.png"></img>
               </div>
-              <img src="Icon1.png"></img>
-            </div>
-          );
-        })}
+            );
+          })}
         </div>
-
         <button
           className="w-full h-[32px] rounded-[20px] text-white text-[16px] font-normal leading-[24px] bg-blue-600"
           onClick={() => {
@@ -67,7 +66,7 @@ export default function Records1() {
         </button>
       </div>
       <div className="flex flex-col gap-[16px]">
-        <h2 className="text-[16px] font-semibold">Amount Rangess</h2>
+        <h2 className="text-[16px] font-semibold">Amount Ranges</h2>
         <div className="flex gap-[16px]">
           <textarea className="w-full " type="text" placeholder="1"></textarea>
           <textarea

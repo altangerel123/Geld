@@ -7,9 +7,9 @@ import Records2 from "../../components/records/Records2";
 export default function Home() {
   return (
     <>
-      <div className="relative h-screen">
+      <div className="relative ">
         <Header />
-        <div className="px-[240px] flex gap-[40px] relative text-black">
+        <div className="h-screen px-[240px] flex gap-[40px] pt-[40px] relative text-black bg-[#1F2937]">
           <Records1 />
           <Records2 />
         </div>

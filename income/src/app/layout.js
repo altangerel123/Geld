@@ -35,7 +35,6 @@ export default function RootLayout({ children }) {
   const [dated, setDated] = useState("");
 
   const [newRecords, setNewRecords] = useState([]);
-  const [addRecord, setaddRecord] = useState("");
 
   const Profile = async () => {
     try {
@@ -120,11 +119,13 @@ export default function RootLayout({ children }) {
       });
       console.log("records", data, typeof data);
       setNewRecords(data);
+      console.log(data.addCategory);
       setIsReady(true);
     } catch (error) {
       toast.error(error.message);
     }
   };
+
   useEffect(() => {
     clickCategory1();
     recordsGet();
@@ -168,8 +169,6 @@ export default function RootLayout({ children }) {
             expense,
             setExpense,
             newRecords,
-            addRecord,
-            setaddRecord,
           }}
         >
           <AuthProvider>{children}</AuthProvider>

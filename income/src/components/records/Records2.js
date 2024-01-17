@@ -12,7 +12,7 @@ export default function Records2() {
           <p className="w-[32px] h-[32px] bg-[#E5E7EB] flex justify-center items-center text-black">
             {"<"}
           </p>
-          <p className="text-black">Last 30 Days</p>
+          <p className="text-white">Last 30 Days</p>
           <p className="w-[32px] h-[32px] bg-[#E5E7EB] flex justify-center items-center text-black">
             {">"}
           </p>
@@ -34,8 +34,10 @@ export default function Records2() {
         </div>
         <p>-35000$</p>
       </div>
-      <div className="flex flex-col  gap-[12px]">
-        <h2 className="text-[16px] font-semibold leading-[24px]">Today</h2>
+      <div className="flex flex-col  gap-[12px] bg-white rounded-[18px] p-[24px]">
+        <h2 className="text-[16px] font-semibold leading-[24px] border-b-[1px]">
+          Today
+        </h2>
         {isReady &&
           newRecords.map((item, index) => {
             return (
@@ -51,22 +53,21 @@ export default function Records2() {
                   <img className="w-[40px] h-[40px] p-[5px] bg-[#FF4545] rounded-full" />
                   <div className="flex flex-col">
                     <p className="text-[16px] font-narmal">
-                      {item.addCategorys}
+                      {item.addCategory}
                     </p>
                     <p className="">{item.dated}</p>
                   </div>
                 </div>
                 <p className="text-[16px] font-normal leading-[24px] text-[#EAB308] flex items-center">
-                  {item.amount}
-                 
+                  {item.amount}$
                 </p>
               </div>
             );
           })}
       </div>
-      <div className="flex flex-col  gap-[12px] mt-[24px]">
+      {/* <div className="flex flex-col  gap-[12px] mt-[24px] bg-white p-[24px] rounded-[18px]">
         <h2 className="text-[16px] font-semibold leading-[24px]">Yesterday</h2>
-      </div>
+      </div> */}
     </div>
   );
 }
