@@ -27,7 +27,10 @@ export default function Income() {
     icon,
     setIcon
   } = useContext(ModalContext);
-  
+  const num = setAmount.reduse((total, number) => {
+    return total + number
+  }, 0)
+  console.log(num)
   return (
     <div
       className={styles.container}
