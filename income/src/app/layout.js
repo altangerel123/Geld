@@ -87,7 +87,7 @@ export default function RootLayout({ children }) {
       toast.error(error.message);
     }
   };
-  const records = async (addCategory, amount, dated) => {
+  const records = async (addCategory, amount, dated, icons) => {
     try {
       const token = localStorage.getItem("token");
       const { data } = await api.post(
@@ -96,6 +96,7 @@ export default function RootLayout({ children }) {
           addCategory,
           amount,
           dated,
+          icons,
         },
         {
           headers: {

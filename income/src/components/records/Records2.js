@@ -65,9 +65,6 @@ export default function Records2() {
             );
           })}
       </div>
-      {/* <div className="flex flex-col  gap-[12px] mt-[24px] bg-white p-[24px] rounded-[18px]">
-        <h2 className="text-[16px] font-semibold leading-[24px]">Yesterday</h2>
-      </div> */}
     </div>
   );
 }

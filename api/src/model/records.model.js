@@ -4,6 +4,7 @@ const Records = mongoose.model("Records", {
   useremail: String,
   expense: Boolean,
   addCategory: String,
+  icons: String,
   amount: String,
   dated: String,
   updatedAt: Date,

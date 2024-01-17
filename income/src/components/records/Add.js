@@ -84,7 +84,7 @@ export default function Add() {
                         className="p-[24px]"
                         key={index}
                         onClick={() => {
-                          // setIsOpen(icons);
+                          setIsOpen(Icon);
                           setIcon(key);
                         }}
                       >
@@ -100,7 +100,7 @@ export default function Add() {
                           key={index}
                           style={{ backgroundColor: colors }}
                           onClick={() => {
-                            setColor(colors);
+                            setColor(color);
                           }}
                         ></div>
                       );

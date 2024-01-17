@@ -24,10 +24,10 @@ export default function Income() {
     category1map,
     expense,
     setExpense,
-    setIsopen,
     icon,
+    setIcon
   } = useContext(ModalContext);
-
+  
   return (
     <div
       className={styles.container}
@@ -95,7 +95,7 @@ export default function Income() {
                 Category
               </h2>
               <div
-                className="w-full h-[30px] border-[1px] px-[15px]"
+                className="w-full h-[30px] border-[1px] px-[15px] flex"
                 onClick={() => {
                   setIsAddModalShown(!isAddModalShown);
                 }}
@@ -117,15 +117,14 @@ export default function Income() {
                   {isReady &&
                     category1map.map((item, index) => {
                       const Icon = icons[item.icon];
-
                       return (
                         <div
-                          className="p-[16px] gap-[12px]"
+                          className="p-[16px] gap-[12px] flex items-center"
                           key={index}
                           onClick={() => {
                             setAddCategory(item.category);
                             setIsAddModalShown(!isAddModalShown);
-                            setIsopen(item.icon);
+                            setIcon(item.icons);
                           }}
                         >
                           <Icon />
