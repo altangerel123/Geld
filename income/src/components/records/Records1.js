@@ -1,9 +1,10 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ModalContext } from "../../app/layout";
 
 export default function Records1() {
-  const { setIsCategory, category1map } = useContext(ModalContext);
+  const { setIsCategory, category1map, setSelectFilter } =
+    useContext(ModalContext);
 
   return (
     <div className="w-1/5 flex flex-col gap-[24px] bg-white py-[24px] px-[16px] rounded-[12px] max-h-fit">
@@ -25,16 +26,34 @@ export default function Records1() {
         <h2 className="text-[16px] font-semibold">Types</h2>
         <div className="text-[16p] font-normal">
           <div className="flex gap-[8px]">
-            <input type="checkbox"></input>
+            <input
+              type="radio"
+              name="type"
+              onClick={() => {
+                setSelectFilter("All");
+              }}
+            ></input>
             <p>All</p>
           </div>
           <div className="flex gap-[8px]">
-            <input type="checkbox"></input>
+            <input
+              type="radio"
+              name="type"
+              onClick={() => {
+                setSelectFilter("Income");
+              }}
+            ></input>
             <p>Income</p>
           </div>
           <div className="flex gap-[8px]">
-            <input type="checkbox"></input>
-            <p>Experse</p>
+            <input
+              type="radio"
+              name="type"
+              onClick={() => {
+                setSelectFilter("Expense");
+              }}
+            ></input>
+            <p>Expense</p>
           </div>
         </div>
       </div>

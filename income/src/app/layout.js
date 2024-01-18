@@ -35,6 +35,7 @@ export default function RootLayout({ children }) {
   const [dated, setDated] = useState("");
 
   const [newRecords, setNewRecords] = useState([]);
+  const [selectFilter, setSelectFilter] = useState("");
 
   const Profile = async () => {
     try {
@@ -87,16 +88,17 @@ export default function RootLayout({ children }) {
       toast.error(error.message);
     }
   };
-  const records = async (addCategory, amount, dated, icons) => {
+  const records = async () => {
     try {
       const token = localStorage.getItem("token");
       const { data } = await api.post(
         "/records",
         {
+          expense,
           addCategory,
           amount,
           dated,
-          icons,
+          recordIcon,
         },
         {
           headers: {
@@ -108,7 +110,7 @@ export default function RootLayout({ children }) {
       toast.error(error.message);
     }
   };
-
+  const [recordIcon, setRecordIcon] = useState("");
   const recordsGet = async () => {
     setIsReady(false);
     try {
@@ -120,7 +122,7 @@ export default function RootLayout({ children }) {
       });
       console.log("records", data, typeof data);
       setNewRecords(data);
-      console.log(data.addCategory);
+      // console.log(data.addCategory);
       setIsReady(true);
     } catch (error) {
       toast.error(error.message);
@@ -136,6 +138,8 @@ export default function RootLayout({ children }) {
       <body>
         <ModalContext.Provider
           value={{
+            recordIcon,
+            setRecordIcon,
             category1map,
             setCategory1map,
             isPro,
@@ -170,6 +174,9 @@ export default function RootLayout({ children }) {
             expense,
             setExpense,
             newRecords,
+            selectFilter,
+            setSelectFilter,
+            recordIcon,
           }}
         >
           <AuthProvider>{children}</AuthProvider>

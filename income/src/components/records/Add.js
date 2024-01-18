@@ -19,7 +19,7 @@ export default function Add() {
   } = useContext(ModalContext);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [color, setColor] = useState("#000");
+  const [color, setColor] = useState([]);
 
   const Color = [
     "#0166FF",
@@ -78,7 +78,6 @@ export default function Add() {
                 <div className="grid grid-cols-6 bg-white">
                   {Object.keys(icons).map((key, index) => {
                     const Icon = icons[key];
-
                     return (
                       <div
                         className="p-[24px]"
@@ -100,7 +99,8 @@ export default function Add() {
                           key={index}
                           style={{ backgroundColor: colors }}
                           onClick={() => {
-                            setColor(color);
+                            setColor(colors);
+                            console.log(colors);
                           }}
                         ></div>
                       );

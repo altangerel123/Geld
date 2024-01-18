@@ -135,19 +135,20 @@ app.post("/records", async (req, res) => {
     });
   }
   try {
-    const {addCategory, amount, dated, icons } = req.body;
+    const { addCategory, amount, dated, recordIcon, expense } = req.body;
     const payload = jwt.verify(authorization, "sss");
     const { email } = payload;
     await Records.create({
       useremail: email,
+      expense,
       addCategory,
-      icons,
+      recordIcon,
       amount,
       dated,
       updatedAt: new Date(),
       createdAt: new Date(),
     });
-    console.log(Records)
+    console.log(Records);
     return res.json({
       message: "New records created",
     });
