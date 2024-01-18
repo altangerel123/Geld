@@ -63,7 +63,7 @@ export default function Records2() {
                       className="w-[20px] h-[20px] border-[1px]"
                       type="checkbox"
                     />
-                    <div className="w-[40px] h-[40px] p-[5px] rounded-full flex justify-center items-center">
+                    <div className="w-[40px] h-[40px] p-[5px] rounded-full flex justify-center items-center" style={{backgroundColor: color}}>
                       <Icon />
                     </div>
                     <div className="flex flex-col">

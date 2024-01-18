@@ -17,7 +17,7 @@ export default function Add() {
     setIcon,
     clickCategory1,
     color, setColor,
-    isOpen, setIsOpen
+    isOpen, setIsOpen,
   } = useContext(ModalContext);
 
   
@@ -63,7 +63,7 @@ export default function Add() {
                   // style={{ color: color, fontSize: "24px" }}
                   className="w-[24px] h-[24px] grid place-content-center"
                 >
-                  <Icon />
+                  {isOpen}
                 </div>
                 <img className="w-[24px] h-[24px]" src="Icon3.png" />
               </div>
