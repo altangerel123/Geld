@@ -49,6 +49,7 @@ export default function Records2() {
               if (selectFilter === "Expense") return select.expense === true;
               if (selectFilter === "Income") return select.expense === false;
             })
+
             .map((item, index) => {
               const Icon = icons[item.recordIcon];
               console.log(Icon, item.recordIcon);

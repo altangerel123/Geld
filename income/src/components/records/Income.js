@@ -100,7 +100,7 @@ export default function Income() {
                   setIsAddModalShown(!isAddModalShown);
                 }}
               >
-                {recordIcon}
+                {/* {recordIcon} */}
                 {addCategory}
               </div>
               <div style={{ display: isAddModalShown ? "flex" : "none" }}>
@@ -126,7 +126,7 @@ export default function Income() {
                           onClick={() => {
                             setIsAddModalShown(!isAddModalShown);
                             setAddCategory(item.category);
-                            setRecordIcon(item.icon);
+                            // setRecordIcon(item.icon);
                           }}
                         >
                           <Icon />
