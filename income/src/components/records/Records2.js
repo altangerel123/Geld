@@ -5,7 +5,7 @@ import { ModalContext } from "../../app/layout";
 import * as icons from "../icons";
 
 export default function Records2() {
-  const { newRecords, isReady, selectFilter } = useContext(ModalContext);
+  const { newRecords, isReady, selectFilter,color } = useContext(ModalContext);
 
   return (
     <div className="w-full">
@@ -63,18 +63,18 @@ export default function Records2() {
                       className="w-[20px] h-[20px] border-[1px]"
                       type="checkbox"
                     />
-                    <div className="w-[40px] h-[40px] p-[5px] bg-[#FF4545] rounded-full flex justify-center items-center">
+                    <div className="w-[40px] h-[40px] p-[5px] rounded-full flex justify-center items-center">
                       <Icon />
                     </div>
                     <div className="flex flex-col">
                       <p className="text-[16px] font-narmal">
                         {item.addCategory}
                       </p>
-                      <p className="">{item.dated}</p>
+                      <p>{item.dated}</p>
                     </div>
                   </div>
                   <p
-                    className="text-[16px] font-normal leading-[24px] text-[#EAB308] flex items-center"
+                    className="text-[16px] font-normal leading-[24px] flex items-center"
                     style={{ color: item.expense ? "#0166FF" : "#16A34A" }}
                   >
                     {item.expense ? "- " : " "}

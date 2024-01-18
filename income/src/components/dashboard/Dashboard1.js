@@ -1,8 +1,11 @@
 "use client";
 
+import { useContext } from "react";
 import { Logo1 } from "../../../public/assets/Logo1";
+import { ModalContext } from "../../app/layout";
 
 export default function Dashboard1() {
+  const {reduseExpense} = useContext(ModalContext);
   return (
     <div>
       <div className="w-full px-[120px] flex gap-[30px] ">
@@ -32,7 +35,9 @@ export default function Dashboard1() {
         <div className="w-1/3 rounded-[18px] p-[32px] border-[1px] border-black bg-white">
           <p className="py-[16px] border-b-[1px]">Total Expenses</p>
           <div className="pb-[16px]">
-            <h2 className="pt-[20px] text-[36px] font-semibold">1,200,000$</h2>
+          <h2 className="pt-[20px] text-[36px] font-semibold">
+            {/* { reduseExpense.reduce((total, item) => total + Number(item.expense === true), 0)} */}
+            ₮</h2>
             <p className="text-[18px] font-normal text-[#64748B]">
               Your Income Amount
             </p>

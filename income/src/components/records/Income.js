@@ -25,7 +25,8 @@ export default function Income() {
     expense,
     setExpense,
     setRecordIcon,
-    recordIcon,
+    color,
+    isOpen,
   } = useContext(ModalContext);
 
   return (
@@ -126,10 +127,10 @@ export default function Income() {
                           onClick={() => {
                             setIsAddModalShown(!isAddModalShown);
                             setAddCategory(item.category);
-                            // setRecordIcon(item.icon);
+                            setRecordIcon(item.icon);
                           }}
                         >
-                          <Icon />
+                          <Icon style={{color: color}}/>
                           {item.category}
                         </div>
                       );

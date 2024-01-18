@@ -16,10 +16,12 @@ export default function Add() {
     icon,
     setIcon,
     clickCategory1,
+    color, setColor,
+    isOpen, setIsOpen
   } = useContext(ModalContext);
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [color, setColor] = useState("#000");
+  
+  
 
   const color1 = [
     "#0166FF",
@@ -30,7 +32,6 @@ export default function Add() {
     "#AE01FF",
     "#FF0101",
   ];
-
   return (
     <div
       className={styles.icon}
@@ -59,10 +60,10 @@ export default function Add() {
                 onClick={() => setIsIcon(!isIcon)}
               >
                 <div
-                  style={{ color: color, fontSize: "24px" }}
+                  // style={{ color: color, fontSize: "24px" }}
                   className="w-[24px] h-[24px] grid place-content-center"
                 >
-                  {isOpen}
+                  <Icon />
                 </div>
                 <img className="w-[24px] h-[24px]" src="Icon3.png" />
               </div>
@@ -82,10 +83,11 @@ export default function Add() {
               >
                 <div className="grid grid-cols-6 bg-white">
                   {Object.keys(icons).map((key, index) => {
-                    const Icon = icons[key];
+                     const Icon = icons[key];
                     return (
                       <div
                         className="p-[24px]"
+                        style={{color: color}}
                         key={index}
                         onClick={() => {
                           setIsOpen(Icon);

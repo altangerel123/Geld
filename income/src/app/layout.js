@@ -9,7 +9,7 @@ import { AuthProvider } from "../components/providers/AuthProvider";
 import { useEffect, useState } from "react";
 import { createContext } from "react";
 import Income from "../components/records/Income";
-import Add from "../components/records/Add";
+import Add from "../components/dashboard/Add";
 import { toast } from "react-toastify";
 import { api } from "./common/axios";
 
@@ -23,6 +23,8 @@ export default function RootLayout({ children }) {
   const [isPro, setIsPro] = useState(false);
   const [profiley, setProfiley] = useState("");
   const [clickProfile, setClickProfile] = useState(false);
+  const [color, setColor] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const [category1map, setCategory1map] = useState([]);
   const [category, setCategory] = useState("");
@@ -35,6 +37,7 @@ export default function RootLayout({ children }) {
   const [dated, setDated] = useState("");
 
   const [newRecords, setNewRecords] = useState([]);
+  const [reduseExpense, setReduseExpense] = useState([]);
   const [selectFilter, setSelectFilter] = useState("");
 
   const Profile = async () => {
@@ -122,7 +125,6 @@ export default function RootLayout({ children }) {
       });
       console.log("records", data, typeof data);
       setNewRecords(data);
-      // console.log(data.addCategory);
       setIsReady(true);
     } catch (error) {
       toast.error(error.message);
@@ -177,6 +179,9 @@ export default function RootLayout({ children }) {
             selectFilter,
             setSelectFilter,
             recordIcon,
+            reduseExpense, setReduseExpense,
+            color, setColor,
+            isOpen, setIsOpen,
           }}
         >
           <AuthProvider>{children}</AuthProvider>
