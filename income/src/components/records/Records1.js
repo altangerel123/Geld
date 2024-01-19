@@ -29,6 +29,7 @@ export default function Records1() {
             <input
               type="radio"
               name="type"
+              defaultChecked
               onClick={() => {
                 setSelectFilter("All");
               }}

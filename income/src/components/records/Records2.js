@@ -5,7 +5,7 @@ import { ModalContext } from "../../app/layout";
 import * as icons from "../icons";
 
 export default function Records2() {
-  const { newRecords, isReady, selectFilter,color } = useContext(ModalContext);
+  const { newRecords, isReady, selectFilter, color } = useContext(ModalContext);
 
   return (
     <div className="w-full">
@@ -49,7 +49,6 @@ export default function Records2() {
               if (selectFilter === "Expense") return select.expense === true;
               if (selectFilter === "Income") return select.expense === false;
             })
-
             .map((item, index) => {
               const Icon = icons[item.recordIcon];
               console.log(Icon, item.recordIcon);
@@ -63,7 +62,10 @@ export default function Records2() {
                       className="w-[20px] h-[20px] border-[1px]"
                       type="checkbox"
                     />
-                    <div className="w-[40px] h-[40px] p-[5px] rounded-full flex justify-center items-center" style={{backgroundColor: color}}>
+                    <div
+                      className="w-[40px] h-[40px] p-[5px] rounded-full flex justify-center items-center"
+                      // style={{ backgroundColor: color }}
+                    >
                       <Icon />
                     </div>
                     <div className="flex flex-col">
@@ -75,7 +77,7 @@ export default function Records2() {
                   </div>
                   <p
                     className="text-[16px] font-normal leading-[24px] flex items-center"
-                    style={{ color: item.expense ? "#0166FF" : "#16A34A" }}
+                    style={{ color: item.expense ? "red" : "#16A34A" }}
                   >
                     {item.expense ? "- " : " "}
                     {item.amount}₮

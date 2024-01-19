@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,49 +8,55 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { faker } from "@faker-js/faker";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Chart.js Bar Chart",
-    },
-  },
-};
-
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "Dataset 1",
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    },
-    {
-      label: "Dataset 2",
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
-    },
-  ],
-};
+import { ModalContext } from "../../app/layout";
+import { useContext } from "react";
 
 export default function Frame1() {
+  const { newRecords } = useContext(ModalContext);
+
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+      },
+    },
+  };
+
+  const labels = newRecords.map((item) => item.addCategory);
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Expense",
+        data: newRecords.map((item) =>
+          item.expense === true ? item.amount : null
+        ),
+        backgroundColor: "rgba(255, 99, 132, 1)",
+      },
+      {
+        label: "Income",
+        data: newRecords.map((item) =>
+          item.expense === false ? item.amount : null
+        ),
+        backgroundColor: "rgba(53, 162, 235, 1)",
+      },
+    ],
+  };
+
   return (
     <div className="bg-white rounded-[18px]">
       <p className="px-[24px] py-[16px] font-normal text-[16px] border-b-[1px]">

@@ -27,7 +27,7 @@ export default function Pro() {
             className=" border-black w-[100px] h-[100px] rounded-full border-[1px]"
             src="Pro.jpeg"
           ></img>
-          <div className="text-black">
+          <div className="text-black gap-[20px] flex text-[20px] font-semibold flex-col">
             <div>Email:{profiley && profiley.email}</div>
             <div>Password:{profiley && profiley.password}</div>
           </div>

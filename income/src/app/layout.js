@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
 
   const [newRecords, setNewRecords] = useState([]);
   const [reduseExpense, setReduseExpense] = useState([]);
-  const [selectFilter, setSelectFilter] = useState("");
+  const [selectFilter, setSelectFilter] = useState("All");
 
   const Profile = async () => {
     try {
@@ -179,9 +179,14 @@ export default function RootLayout({ children }) {
             selectFilter,
             setSelectFilter,
             recordIcon,
-            reduseExpense, setReduseExpense,
-            color, setColor,
-            isOpen, setIsOpen,
+            reduseExpense,
+            setReduseExpense,
+            color,
+            setColor,
+            isOpen,
+            setIsOpen,
+            color,
+            setColor,
           }}
         >
           <AuthProvider>{children}</AuthProvider>
