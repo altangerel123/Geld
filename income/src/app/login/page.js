@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../components/providers/AuthProvider";
 
 export default function Home() {
+  const [page, setpage] = useState(1);
   const router = useRouter();
   const { isLoggedIn } = useAuth();
   useEffect(() => {
@@ -16,7 +17,6 @@ export default function Home() {
 
   if (!isLoggedIn) return null;
 
-  const [page, setpage] = useState(1);
   if (page == 1) {
     return <Login1 page={page} setpage={setpage} />;
   } else if (page == 2) {
