@@ -177,6 +177,7 @@ app.get("/recordsGet", async (req, res) => {
 });
 
 const port = 3002;
+app.use("/api/v1", PostRoute);
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
