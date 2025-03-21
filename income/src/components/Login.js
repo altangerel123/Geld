@@ -9,7 +9,7 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPaswsword] = useState("");
   return (
-    <div className="w-full h-[1224px] flex bg-blue-700 text-black">
+    <div className="w-full h-screen flex bg-blue-700 text-black">
       <div className="w-1/2 h-full bg-white flex justify-center items-center">
         <div className="max-w-[384px] flex flex-col gap-[40px]">
           <div className="flex justify-center items-center gap-[9px]">

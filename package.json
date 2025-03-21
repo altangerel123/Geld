@@ -4,5 +4,8 @@
     "next": "^14.0.4",
     "react-icons": "^5.0.1",
     "toast": "^0.5.4"
+  },
+  "scripts": {
+    "build": "next build"
   }
 }

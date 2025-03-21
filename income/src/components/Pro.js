@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ModalContext } from "../app/layout";
 import styles from "../components/records/income.module.css";
 import { useAuth } from "./providers/AuthProvider";

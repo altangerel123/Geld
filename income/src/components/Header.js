@@ -26,11 +26,14 @@ export default function Header() {
             className="text-[16px] font-normal leading-[24px] cursor-pointer "
             onClick={() => {
               router.push("/dashboard");
-              setFontWeight1(!fontWeight1);
+              setFontWeight1(true);
             }}
             style={{
               fontWeight: fontWeight1 ? "500" : "",
               fontSize: fontWeight1 ? "20px" : "",
+              borderRadius: fontWeight1 ? "50px" : "",
+              border: fontWeight1 ? "1px solid #000" : "",
+              padding: fontWeight1 ? "12px" : "",
             }}
           >
             Dashboard
@@ -39,11 +42,14 @@ export default function Header() {
             className="text-[16px] font-normal leading-[24px] cursor-pointer"
             onClick={() => {
               router.push("/records");
-              setFontWeight1(!fontWeight1);
+              setFontWeight1(false);
             }}
             style={{
               fontWeight: fontWeight1 ? "" : "500",
               fontSize: fontWeight1 ? "" : "20px",
+              borderRadius: fontWeight1 ? "50px" : "",
+              border: fontWeight1 ? "1px solid #000" : "",
+              padding: fontWeight1 ? "12px" : "",
             }}
           >
             Records

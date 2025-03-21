@@ -25,9 +25,6 @@ export default function Income() {
     expense,
     setExpense,
     setRecordIcon,
-    color,
-    isOpen,
-    setIsOpen,
   } = useContext(ModalContext);
 
   return (
