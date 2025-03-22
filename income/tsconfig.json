@@ -23,7 +23,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/app/common/axios/index.js"
+    "src/app/common/axios/index.ts"
   ],
   "exclude": ["node_modules"]
 }
