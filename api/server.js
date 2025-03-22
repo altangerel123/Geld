@@ -11,6 +11,7 @@ const { Category } = require("./src/model/category.model");
 const { Records, Records3 } = require("./src/model/records.model");
 const { error } = require("console");
 
+dotenv.config();
 const app = express();
 connectDatabase();
 app.use(cors());
