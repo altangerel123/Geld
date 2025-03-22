@@ -106,12 +106,6 @@ app.post("/category", async (req, res) => {
     });
   } catch (error) {}
 });
-app.get("/", (req, res) => {
-  res.send({
-    activeSatuse: true,
-    error: false,
-  });
-});
 
 app.get("/clickCategory1", async (req, res) => {
   const { authorization } = req.headers;
@@ -177,6 +171,9 @@ app.get("/recordsGet", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+app.get("/", (req, res) => {
+  res.send(`Example app listening on port ${port}`);
 });
 
 const port = 3002;
