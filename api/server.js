@@ -9,6 +9,7 @@ const { connectDatabase } = require("./src/database");
 const { User } = require("./src/model/user.model");
 const { Category } = require("./src/model/category.model");
 const { Records, Records3 } = require("./src/model/records.model");
+const { error } = require("console");
 
 const app = express();
 connectDatabase();
@@ -104,6 +105,12 @@ app.post("/category", async (req, res) => {
       message: "New category created",
     });
   } catch (error) {}
+});
+app.get("/", (req, res) => {
+  res.send({
+    activeSatuse: true,
+    error: false,
+  });
 });
 
 app.get("/clickCategory1", async (req, res) => {
