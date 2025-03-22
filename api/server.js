@@ -5,10 +5,10 @@ const dotenv = require("dotenv").config();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
-const { connectDatabase } = require("./database");
-const { User } = require("./model/user.model");
-const { Category } = require("./model/category.model");
-const { Records, Records3 } = require("./model/records.model");
+const { connectDatabase } = require("./src/database");
+const { User } = require("./src/model/user.model");
+const { Category } = require("./src/model/category.model");
+const { Records, Records3 } = require("./src/model/records.model");
 
 const app = express();
 connectDatabase();
@@ -103,9 +103,7 @@ app.post("/category", async (req, res) => {
     return res.json({
       message: "New category created",
     });
-  } catch (error) {
-    message: "Bvr tom aldaa";
-  }
+  } catch (error) {}
 });
 
 app.get("/clickCategory1", async (req, res) => {
@@ -119,10 +117,8 @@ app.get("/clickCategory1", async (req, res) => {
     const payload = jwt.verify(authorization, "sss");
     const { email } = payload;
 
-    // const records = JSON.parse(recordsRaw);
-
     const category1 = await Category.find({ useremail: email });
-    // return res.json(typeof category1);
+
     return res.json(category1);
   } catch (error) {
     console.log(error);
