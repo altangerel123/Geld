@@ -5,30 +5,10 @@ import { ModalContext } from "../../app/layout";
 import * as icons from "../icons";
 
 export default function Records2() {
-  const { newRecords, isReady, selectFilter, color } = useContext(ModalContext);
+  const { newRecords, isReady, selectFilter } = useContext(ModalContext);
 
   return (
     <div className="w-full">
-      <div className="flex justify-between mb-[24px]">
-        <div className="flex gap-[4px] items-center text-white">
-          <p className="w-[32px] h-[32px] bg-[#E5E7EB] flex justify-center items-center text-black">
-            {"<"}
-          </p>
-          <p className="text-white">Last 30 Days</p>
-          <p className="w-[32px] h-[32px] bg-[#E5E7EB] flex justify-center items-center text-black">
-            {">"}
-          </p>
-        </div>
-        <div className="flex px-[16px] py-[4p] bg-white rounded-[8px] items-center">
-          <p className=" text-[16px] font-normal leading-[24px]">
-            Newest first
-          </p>
-          <img
-            className="w-[20px] h-[20px] flex justify-center items-center"
-            src="Icon3.png"
-          />
-        </div>
-      </div>
       <div className="flex justify-between border-[1px] bg-white px-[24px] py-[12px] rounded-[12px] mb-[24px]">
         <div className="flex gap-[16px]">
           <input type="checkbox" />
@@ -62,10 +42,7 @@ export default function Records2() {
                       className="w-[20px] h-[20px] border-[1px]"
                       type="checkbox"
                     />
-                    <div
-                      className="w-[40px] h-[40px] p-[5px] rounded-full flex justify-center items-center"
-                      // style={{ backgroundColor: color }}
-                    >
+                    <div className="w-[40px] h-[40px] p-[5px] rounded-full flex justify-center items-center">
                       <Icon />
                     </div>
                     <div className="flex flex-col">

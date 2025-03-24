@@ -2,20 +2,22 @@
 
 import { useRouter } from "next/navigation";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ModalContext } from "../app/layout";
 import Pro from "../components/Pro";
 
 export default function Header() {
-  const { clickProfile, setIsIncomeModalShown, Profile, setClickProfile } =
+  const { clickProfile, profiley, Profile, setClickProfile } =
     useContext(ModalContext);
-
   const [fontWeight1, setFontWeight1] = useState(true);
   const router = useRouter();
   const handle = () => {
     Profile(true);
     setClickProfile(!clickProfile);
   };
+  useEffect(() => {
+    Profile();
+  });
 
   return (
     <>
@@ -28,13 +30,6 @@ export default function Header() {
               router.push("/dashboard");
               setFontWeight1(true);
             }}
-            style={{
-              fontWeight: fontWeight1 ? "500" : "",
-              fontSize: fontWeight1 ? "20px" : "",
-              borderRadius: fontWeight1 ? "50px" : "",
-              border: fontWeight1 ? "1px solid #000" : "",
-              padding: fontWeight1 ? "12px" : "",
-            }}
           >
             Dashboard
           </h2>
@@ -44,18 +39,11 @@ export default function Header() {
               router.push("/records");
               setFontWeight1(false);
             }}
-            style={{
-              fontWeight: fontWeight1 ? "" : "500",
-              fontSize: fontWeight1 ? "" : "20px",
-              borderRadius: fontWeight1 ? "50px" : "",
-              border: fontWeight1 ? "1px solid #000" : "",
-              padding: fontWeight1 ? "12px" : "",
-            }}
           >
             Records
           </h2>
         </div>
-        <div className="flex gap-[24px]">
+        <div className="flex justify-center items-center gap-3">
           <button
             className="p-[12px] bg-blue-600 text-white rounded-[50px]"
             onClick={() => {
@@ -65,11 +53,12 @@ export default function Header() {
           >
             + Records
           </button>
-          <img
-            className=" border-[1px] border-black w-[50px] h-[50px] rounded-full"
-            src="Pro.jpeg"
+          <div
+            className="flex justify-center items-center gap-2 rounded-[50px] p-2 bg-[#1F2937] text-white"
             onClick={handle}
-          ></img>
+          >
+            {profiley.email}
+          </div>
         </div>
       </div>
       <Pro />

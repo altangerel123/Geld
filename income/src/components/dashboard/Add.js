@@ -1,7 +1,7 @@
 "use client";
 import styles from "../../components/records/income.module.css";
 import { ModalContext } from "../../app/layout";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import * as icons from "../icons";
 
 export default function Add() {
@@ -16,12 +16,11 @@ export default function Add() {
     icon,
     setIcon,
     clickCategory1,
-    color, setColor,
-    isOpen, setIsOpen,
+    color,
+    setColor,
+    isOpen,
+    setIsOpen,
   } = useContext(ModalContext);
-
-  
-  
 
   const color1 = [
     "#0166FF",
@@ -59,10 +58,7 @@ export default function Add() {
                 className="flex p-[16px] border-[1px] bg-[#F9FAFB] rounded-[8px] "
                 onClick={() => setIsIcon(!isIcon)}
               >
-                <div
-                  // style={{ color: color, fontSize: "24px" }}
-                  className="w-[24px] h-[24px] grid place-content-center"
-                >
+                <div className="w-[24px] h-[24px] grid place-content-center">
                   {isOpen}
                 </div>
                 <img className="w-[24px] h-[24px]" src="Icon3.png" />
@@ -83,11 +79,11 @@ export default function Add() {
               >
                 <div className="grid grid-cols-6 bg-white">
                   {Object.keys(icons).map((key, index) => {
-                     const Icon = icons[key];
+                    const Icon = icons[key];
                     return (
                       <div
                         className="p-[24px]"
-                        style={{color: color}}
+                        style={{ color: color }}
                         key={index}
                         onClick={() => {
                           setIsOpen(Icon);

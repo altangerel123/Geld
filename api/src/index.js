@@ -5,13 +5,12 @@ const dotenv = require("dotenv").config();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
-const { connectDatabase } = require("./src/database");
-const { User } = require("./src/model/user.model");
-const { Category } = require("./src/model/category.model");
-const { Records, Records3 } = require("./src/model/records.model");
+const { connectDatabase } = require("./database");
+const { User } = require("./model/user.model");
+const { Category } = require("./model/category.model");
+const { Records, Records3 } = require("./model/records.model");
 const { error } = require("console");
 
-dotenv.config();
 const app = express();
 connectDatabase();
 app.use(cors());

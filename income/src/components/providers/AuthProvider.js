@@ -17,19 +17,14 @@ export const AuthProvider = ({ children }) => {
 
   const signUp = async (email, password) => {
     setIsLoading(true);
-
     try {
       const { data } = await api.post("/sign-up", {
         email,
         password,
       });
-
       const { token } = data;
-
       localStorage.setItem("token", token);
-
       setIsLoggedIn(true);
-
       router.push("/login");
     } catch (error) {
       if (error.response) {

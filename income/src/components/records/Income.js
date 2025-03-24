@@ -99,7 +99,6 @@ export default function Income() {
                   setIsAddModalShown(!isAddModalShown);
                 }}
               >
-                {/* {recordIcon} */}
                 {addCategory}
               </div>
               <div style={{ display: isAddModalShown ? "flex" : "none" }}>

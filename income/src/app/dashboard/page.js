@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="w-full h-full text-black bg-[#1F2937]">
       <Header />
-      <div className="pt-[40px]">
+      <div className="py-[40px]">
         <Dashboard1 />
         <Dashboard2 />
         <Dashboard3 />

@@ -9,14 +9,6 @@ export default function Records1() {
   return (
     <div className="w-1/5 flex flex-col gap-[24px] bg-white py-[24px] px-[16px] rounded-[12px] max-h-fit">
       <h1 className="text-[24px] font-semibold">Records</h1>
-      <button
-        className="px-[12px] h-[32px] rounded-[20px] bg-blue-600 text-white"
-        onClick={() => {
-          setIsCategory(true);
-        }}
-      >
-        + Add
-      </button>
       <input
         className="px-[16px] rounded-[10px] text-black border-[1px]"
         placeholder="Search"
