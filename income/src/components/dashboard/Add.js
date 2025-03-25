@@ -17,20 +17,9 @@ export default function Add() {
     setIcon,
     clickCategory1,
     color,
-    setColor,
     isOpen,
     setIsOpen,
   } = useContext(ModalContext);
-
-  const color1 = [
-    "#0166FF",
-    "#01B3FF",
-    "#41CC00",
-    "#F9D100",
-    "#FF7B01",
-    "#AE01FF",
-    "#FF0101",
-  ];
   return (
     <div
       className={styles.icon}
@@ -71,7 +60,6 @@ export default function Add() {
                     setCategory(e.target.value);
                   }}
                 />
-                <img className="" src="Icon3.png" />
               </div>
               <div
                 className="absolute top-[60px] left-0"
@@ -94,26 +82,12 @@ export default function Add() {
                       </div>
                     );
                   })}
-                  <div className="grid grid-cols-7 gap-[40px] p-4">
-                    {color1.map((colors, index) => {
-                      return (
-                        <div
-                          className="w-[24px] h-[24px] rounded-full border-t-[1px]"
-                          key={index}
-                          style={{ backgroundColor: colors }}
-                          onClick={() => {
-                            setColor(colors);
-                            console.log(colors);
-                          }}
-                        ></div>
-                      );
-                    })}
-                  </div>
                 </div>
               </div>
             </div>
             <p
-              className="h-[40px] rounded-[20px] bg-[#16A34A] mt-[32px] flex justify-center items-center "
+              className="h-[40px] rounded-[20px]  mt-[32px] flex justify-center items-center"
+              style={{ backgroundColor: "rgba(53, 162, 235, 1)" }}
               onClick={async () => {
                 await clickCategory(icon, category);
                 await clickCategory1(category, icon);

@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ModalContext } from "../../app/layout";
 
 export default function Records1() {
@@ -69,29 +69,14 @@ export default function Records1() {
           })}
         </div>
         <button
-          className="w-full h-[32px] rounded-[20px] text-white text-[16px] font-normal leading-[24px] bg-blue-600"
+          className="w-full h-[32px] rounded-[20px] text-white text-[16px] font-normal leading-[24px] "
+          style={{ backgroundColor: "rgba(53, 162, 235, 1)" }}
           onClick={() => {
             setIsCategory(true);
           }}
         >
           + Add Category
         </button>
-      </div>
-      <div className="flex flex-col gap-[16px]">
-        <h2 className="text-[16px] font-semibold">Amount Ranges</h2>
-        <div className="flex gap-[16px]">
-          <textarea className="w-full " type="text" placeholder="1"></textarea>
-          <textarea
-            className="pl-[30px]"
-            type="text"
-            placeholder="100"
-          ></textarea>
-        </div>
-        <div className="flex">
-          <input type="radio"></input>
-          <input className="w-full" type="range"></input>
-          <input type="radio"></input>
-        </div>
       </div>
     </div>
   );

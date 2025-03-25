@@ -60,7 +60,7 @@ export default function Income() {
                   setExpense(true);
                 }}
                 style={{
-                  backgroundColor: expense ? "#0166FF" : "white",
+                  backgroundColor: expense ? "rgba(255, 99, 132, 1)" : "white",
                   color: expense ? "white" : "black",
                 }}
               >
@@ -72,7 +72,7 @@ export default function Income() {
                   setExpense(false);
                 }}
                 style={{
-                  backgroundColor: expense ? "white" : "#16A34A",
+                  backgroundColor: expense ? "white" : "rgba(53, 162, 235, 1) ",
                   color: expense ? "black" : "white",
                 }}
               >
@@ -157,7 +157,9 @@ export default function Income() {
             <button
               className="w-full h-[40px] py-[12px] rounded-[20px] flex justify-center border-[1px] items-center"
               style={{
-                backgroundColor: expense ? "#0166FF" : "#16A34A",
+                backgroundColor: expense
+                  ? "rgba(255, 99, 132, 1)"
+                  : "rgba(53, 162, 235, 1)",
                 color: expense ? "white" : "white",
               }}
               onClick={() => {

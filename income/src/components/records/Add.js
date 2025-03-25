@@ -1,5 +1,5 @@
 "use client";
-import styles from "../../components/records/income.module.css";
+import styles from "../components/records/income.module.css";
 import { ModalContext } from "../../app/layout";
 import { useContext } from "react";
 import * as icons from "../icons";
@@ -18,19 +18,7 @@ export default function Add() {
     clickCategory1,
     isOpen,
     setIsOpen,
-    color,
-    setColor,
   } = useContext(ModalContext);
-
-  const color1 = [
-    "#0166FF",
-    "#01B3FF",
-    "#41CC00",
-    "#F9D100",
-    "#FF7B01",
-    "#AE01FF",
-    "#FF0101",
-  ];
 
   return (
     <div
@@ -94,20 +82,6 @@ export default function Add() {
                       </div>
                     );
                   })}
-                  <div className="grid grid-cols-7 gap-[40px] p-4">
-                    {color1.map((colors, index) => {
-                      return (
-                        <div
-                          className="w-[24px] h-[24px] rounded-full border-t-[1px]"
-                          key={index}
-                          onClick={() => {
-                            setColor(colors);
-                            console.log(colors);
-                          }}
-                        ></div>
-                      );
-                    })}
-                  </div>
                 </div>
               </div>
             </div>

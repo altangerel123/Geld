@@ -38,25 +38,21 @@ export const AuthProvider = ({ children }) => {
   };
   const login = async (email, password) => {
     setIsLoading(true);
-
     try {
       const { data } = await api.post("/login", {
         email,
         password,
       });
-
       const { token } = data;
-
       localStorage.setItem("token", token);
-
       setIsLoggedIn(true);
-
       router.push("/login");
+      toast.success("Амжилттай нэвтэрлээ");
     } catch (error) {
       if (error.response) {
         toast.error(error.response.data.message);
       } else {
-        toast.error(error.message);
+        toast.error("Email, Password буруу байна");
       }
     } finally {
       setIsLoading(false);
@@ -66,6 +62,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     router.push("/");
+    toast.error("Logout");
   };
 
   useEffect(() => {
@@ -76,7 +73,6 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       setIsLoggedIn(true);
     }
-
     setIsReady(true);
   });
 

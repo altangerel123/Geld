@@ -20,20 +20,31 @@ export default function Dashboard3() {
               className="flex px-[24px] py-[12px] justify-between bg-white rounded-[12px]"
             >
               <div className="flex leading-[24px] gap-[16px] items-center">
-                <div className="w-[40px] h-[40px] p-[5px] bg-[#FF4545] rounded-full flex justify-center items-center">
+                <div
+                  className="w-[40px] h-[40px] p-[5px] bg-[#FF4545] rounded-full flex justify-center items-center"
+                  style={{
+                    backgroundColor: item.expense
+                      ? "rgba(255, 99, 132, 1)"
+                      : "rgba(53, 162, 235, 1)",
+                  }}
+                >
                   <Icon />
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-[16px] font-narmal">{item.addCategory}</p>
+                  <p className="text-[20px] font-medium">{item.addCategory}</p>
                   <p className="">{item.dated}</p>
                 </div>
               </div>
               <p
-                className="text-[16px] font-normal leading-[24px] text-[#EAB308] flex items-center"
-                style={{ color: item.expense ? "#0166FF" : "#16A34A" }}
+                className="text-[16px] font-normal leading-[24px] flex items-center"
+                style={{
+                  color: item.expense
+                    ? "rgba(255, 99, 132, 1)"
+                    : "rgba(53, 162, 235, 1)",
+                }}
               >
                 {item.expense ? "- " : " "}
-                {item.amount}₮
+                {item.amount} ₮
               </p>
             </div>
           );

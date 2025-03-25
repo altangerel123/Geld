@@ -14,8 +14,8 @@ export default function Records2() {
           <input type="checkbox" />
           <p>Select all</p>
         </div>
-        <p>
-          {newRecords.reduce((total, item) => total + Number(item.amount), 0)}₮
+        <p className="text-[20px] font-semibold">
+          {newRecords.reduce((total, item) => total + Number(item.amount), 0)} ₮
         </p>
       </div>
       <div className="flex flex-col  gap-[12px] bg-white rounded-[18px] p-[24px]">
@@ -42,19 +42,30 @@ export default function Records2() {
                       className="w-[20px] h-[20px] border-[1px]"
                       type="checkbox"
                     />
-                    <div className="w-[40px] h-[40px] p-[5px] rounded-full flex justify-center items-center">
+                    <div
+                      className="w-[40px] h-[40px] p-[5px] rounded-full flex justify-center items-center"
+                      style={{
+                        backgroundColor: item.expense
+                          ? "rgba(255, 99, 132, 1)"
+                          : "rgba(53, 162, 235, 1)",
+                      }}
+                    >
                       <Icon />
                     </div>
                     <div className="flex flex-col">
-                      <p className="text-[16px] font-narmal">
+                      <p className="text-[20px] font-medium">
                         {item.addCategory}
                       </p>
                       <p>{item.dated}</p>
                     </div>
                   </div>
                   <p
-                    className="text-[16px] font-normal leading-[24px] flex items-center"
-                    style={{ color: item.expense ? "red" : "#16A34A" }}
+                    className="text-[20px] font-normal leading-[24px] flex items-center"
+                    style={{
+                      color: item.expense
+                        ? "rgba(255, 99, 132, 1)"
+                        : "rgba(53, 162, 235, 1)",
+                    }}
                   >
                     {item.expense ? "- " : " "}
                     {item.amount}₮

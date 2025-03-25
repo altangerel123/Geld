@@ -48,7 +48,6 @@ export default function RootLayout({ children }) {
           Authorization: token,
         },
       });
-
       const { profile } = data;
       setProfiley(profile[0]);
     } catch (error) {

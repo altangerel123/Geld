@@ -11,13 +11,6 @@ export default function Login2(props) {
       </div>
       <div className="max-w-[384px] flex flex-col justify-center items-center">
         <Money1 />
-        <p className="text-[24px] font-normal mb-[24px]">
-          Set up your cash Balance
-        </p>
-        <input
-          className="w-full mb-[12px] border-[2px] border-[#A3A3A3] rounded-[5px] p-[16px]"
-          placeholder="Email"
-        />
         <p className="mb-[32px]">How much cash do you have in your wallet?</p>
         <button
           className="w-[100%] py-[16px] rounded-[30px] bg-blue-600 text-white"

@@ -11,10 +11,6 @@ export default function Login1(props) {
       </div>
       <div className="max-w-[384px] flex flex-col justify-center items-center">
         <Money />
-        <p className="text-[24px] font-normal mb-[24px]">
-          Select base currency
-        </p>
-        <input className="w-full mb-[12px] border-[2px] border-[#A3A3A3] rounded-[5px] p-[16px]" />
         <p className="mb-[32px]">
           Your base currency should be the one you use most often. All
           transaction in other currencies will be calculated based on this one

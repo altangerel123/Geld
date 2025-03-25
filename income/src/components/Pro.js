@@ -32,14 +32,14 @@ export default function Pro() {
             <div>Password:{profiley && profiley.password}</div>
           </div>
         </div>
-        <div className="w-full flex justify-center">
+        <button className="w-full flex justify-center cursor-pointer">
           <p
             className="bg-blue-600 text-white max-w-fit px-[30px] py-[5px] rounded-[10px]"
             onClick={signOut}
           >
             Log Out
           </p>
-        </div>
+        </button>
       </div>
     </div>
   );

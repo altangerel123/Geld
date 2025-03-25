@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -56,7 +58,6 @@ export default function Frame1() {
       },
     ],
   };
-
   return (
     <div className="bg-white rounded-[18px]">
       <p className="px-[24px] py-[16px] font-normal text-[16px] border-b-[1px]">
