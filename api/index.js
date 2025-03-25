@@ -176,7 +176,7 @@ app.get("/", (req, res) => {
   res.send(`Example app listening on port ${port}`);
 });
 
-const port = 3002;
+const port = process.env.PORT || 3002;
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
